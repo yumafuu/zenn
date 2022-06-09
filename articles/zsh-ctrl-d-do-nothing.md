@@ -17,7 +17,6 @@ setopt IGNORE_EOF
 
 ```bash
 setopt IGNORE_EOF
-
 ```
 だけだと
 
