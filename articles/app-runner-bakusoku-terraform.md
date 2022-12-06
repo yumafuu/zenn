@@ -8,7 +8,7 @@ published: false
 
 # はじめに
 
-こんにちは。App Runner大好きyamlエンジニアのyuma ishikawaです！
+こんにちは。App Runner大好きyamlエンジニアの[yuma ishikawa](https://twitter.com/yuma_katameoome)です！
 今回はAWSの(個人的)大注目サービスのAppRunnerを爆速動かすためのterraformの実装例を紹介します。
 
 AWSでコンテナを動かしたいならECSかEKSだと思いますが、ECSはALBとかECSのServiceとかTaskとかよくわからん...とか、Kubernetesなんて恐ろしくて手が出せない...とか敷居が高いですよね分かります。
