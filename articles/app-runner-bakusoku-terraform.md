@@ -213,11 +213,9 @@ module "sg" {
 
 ```
 
-</details>
-
 ### ECR
 
-[ECR](https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/what-is-ecr.html)とは、Dockerイメージを置いておくための箱です。AppRunnerで動かしたいイメージをここに置いておいて、後から参照しにきます。
+[ECR](https://docs.aws.amazon.com/ja_jp/AmazonECR/latest/userguide/what-is-ecr.html)とは、Dockerイメージを置いておくための箱です。AppRunnerで動かしたいイメージをここに置いておいて参照しにきます。
 
 ecr.tf
 
@@ -344,7 +342,7 @@ output "service_url" {
 実際にapplyしてみます!
 
 ```
-$ terrafom init # moduleを引っ張ってくる
+$ terrafom init
 $ terrafom apply
 ```
 
@@ -369,3 +367,4 @@ AppRunner爆速で作る with Terraformでやってみました。
 IaCのメリットとして一度作ってしまえばテンプレートとして使いまわせるので、ちょっとコンテナ動かしたいなみたいな時に非常に楽に運用できますので、是非お試しください！
 
 それでは、快適なAppRunnerライフを🚀
+
