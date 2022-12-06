@@ -13,9 +13,9 @@ published: false
 
 AWSでコンテナを動かしたいならECSかEKSだと思いますが、ECSはALBとかECSのServiceとかTaskとかよくわからん...とか、Kubernetesなんて恐ろしくて手が出せない...とか敷居が高いですよね分かります。
 
-アプリ開発をしたいけどインフラの知識がない...だったり、サーバーのこと考えないでゴリゴリ機能開発したい!!だったりといったケースに持ってこいのサービスだと思っています。
+アプリ開発をしたいけどインフラの知識がない...だったり、サーバーのこと考えないでゴリゴリ機能開発したい！！だったりといったケースに持ってこいのサービスだと思っています。
 
-各リソースについて軽く紹介しながらTerraformの運用Tipsも織り込んでおりますので、AWSとTerraformの初心者の方やTerraformerの方々にぜひ読んでみて欲しいです!
+各リソースについて軽く紹介しながらTerraformの運用Tipsも織り込んでおりますので、AWSとTerraformの初心者の方やTerraformerの方々にぜひ読んでみて欲しいです！
 
 # 実装
 
@@ -158,7 +158,7 @@ terraform {
 
 ## 各リソースの説明
 
-一個ずつサクッとみていきます!
+一個ずつサクッとみていきます！
 
 長いとこは省略しています
 
@@ -166,7 +166,7 @@ terraform {
 
 [ VPC ](https://docs.aws.amazon.com/ja_jp/vpc/latest/userguide/what-is-amazon-vpc.html)とはAWS上の仮想ネットワークです。この上に色々乗っかっていきます。
 
-[terraformの公式module](https://registry.terraform.io/modules/terraform-aws-modules)が便利なのでガンガン使っていきましょう!
+[terraformの公式module](https://registry.terraform.io/modules/terraform-aws-modules)が便利なのでガンガン使っていきましょう！
 
 Aurora作る想定でdatabase_subnetsを作ってます。
 
@@ -336,7 +336,7 @@ output "service_url" {
 
 ## Applyしていく！
 
-実際にapplyしてみます!
+実際にapplyしてみます！
 
 ```
 $ terrafom init
