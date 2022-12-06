@@ -67,8 +67,7 @@ $  aws cloudformation deploy \
 
 ```
 
-<details>
-<summary>backend-cfn.yaml</summary>
+backend-cfn.yaml
 
 ```yaml
 AWSTemplateFormatVersion: "2010-09-09"
@@ -118,8 +117,6 @@ Outputs:
     Value: !Ref BackendDynamoDbTable
 
 ```
-</details>
-
 
 次に、Terraformの設定をしていきます。
 
