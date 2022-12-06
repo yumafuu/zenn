@@ -53,10 +53,8 @@ AppRunnerはAWSのマネージドのVPCにサービスが作成されます。(�
 
 ## バックエンドの作成・設定
 
-Terraformはリソースの状態をtfstateというファイルに記述して管理します。
+Terraformはリソースの状態を[tfstate](https://developer.hashicorp.com/terraform/language/state)というファイルに記述して管理します。
 独り占めしちゃうとよくないのでS3に置いて管理するのが一般的です。(機密情報が含まれるのでGit管理はNG)
-
-詳しくは[こちら](https://developer.hashicorp.com/terraform/language/state)
 
 今回は同じIaCツールの[CloudFormation](https://aws.amazon.com/jp/cloudformation/)で作っていきます。
 
