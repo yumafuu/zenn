@@ -58,7 +58,9 @@ Terraformはリソースの状態をtfstateというファイルに記述して�
 
 詳しくは[こちら](https://developer.hashicorp.com/terraform/language/state)
 
-こんな感じで実行するだけでできちゃいます。便利ー！
+今回は同じIaCツールの[CloudFormation](https://aws.amazon.com/jp/cloudformation/)で作っていきます。
+
+こんな感じで実行するだけでできちゃいます！便利ー！
 ```bash
 $  aws cloudformation deploy \
   --stack-name awesomeapp-prod-terraform-backend \
