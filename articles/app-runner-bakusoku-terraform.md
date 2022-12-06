@@ -34,7 +34,7 @@ AppRunnerにデプロイ方法は複数用意されていますが、今回はEC
 AppRunnerはAWSのマネージドのVPCにサービスが作成されます。(マネコンからは見えない)
 なのですが、VPC Connectorというものを使えば自分たちで作ったVPCのprivateなリソース(Auroraとか)にアクセスすることができます。今回はそれも作っていきます。
 
-実際のコードは[ここ](https://github.com/YumaFuu/zenn)にありますので、詳しく見たい方は見てみてください。
+実際のコードは[ここ](https://github.com/YumaFuu/zenn/tree/main/src/app-runner-bakusoku-terraform)にありますので、詳しく見たい方は見てみてください。
 
 ## ディレクトリ構成
 
