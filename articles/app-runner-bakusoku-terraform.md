@@ -357,6 +357,8 @@ service_url = "xxxxxxxxxx.ap-northeast-1.awsapprunner.com"
 
 おぉ〜、アクセスできました！
 
+latestに好きなイメージをpushすれば勝手にデプロイしてくれます！(ポーリングしてるのかどうやってるのか知りたい...)
+
 # 終わりに
 
 AppRunner爆速で作る with Terraformでやってみました。
