@@ -12,7 +12,7 @@ zleを使います
 
 zleについてはクラメソ様の記事がわかりやすいです
 
-(Macがzshになるなら、ZLEを習得するっきゃない！)[https://dev.classmethod.jp/articles/zsh-zle-introduction/]
+[ Macがzshになるなら、ZLEを習得するっきゃない！ ]( https://dev.classmethod.jp/articles/zsh-zle-introduction/ )
 
 ```zsh
 # .zshrc に書いておく
