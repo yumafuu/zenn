@@ -2,8 +2,8 @@
 title: "Lambdaでpuppeteerを動かす"
 emoji: "💨"
 type: "tech"
-topics: ["aws", "lambda", "puppeteer", "lambroll"]
-published: false
+topics: ["aws", "lambda", "puppeteer"]
+published: true
 ---
 
 # 概要
