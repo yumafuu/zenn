@@ -4,6 +4,7 @@ emoji: "💨"
 type: "tech"
 topics: ["aws", "apprunner", "terraform"]
 published: true
+publication_name: "ispec_inc"
 ---
 
 # はじめに
