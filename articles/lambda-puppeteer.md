@@ -77,7 +77,7 @@ $ mkdir fonts && \
 5. lambda関数をデプロイする
 
 ```js
-# index.js
+// index.js
 const puppeteer = require("puppeteer-core");
 const chromium = require("@sparticuz/chromium");
 
@@ -92,10 +92,11 @@ exports.handler = async (event, context) => {
 
   const page = await browser.newPage();
 
-  const dest = "/tmp/screenshot.png"
+  const path = "/tmp/screenshot.png"
 
   await page.goto('https://example.com');
-  await page.screenshot({ path: "/tmp/screenshot.png" });
+  await page.screenshot({ path });
+  // なんかする
   await browser.close();
 
   return "ok"
