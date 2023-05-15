@@ -4,6 +4,7 @@ emoji: "💨"
 type: "tech"
 topics: ["aws", "lambda", "puppeteer"]
 published: true
+publication_name: "ispec_inc"
 ---
 
 # 概要
