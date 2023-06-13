@@ -13,6 +13,8 @@ publication_name: "ispec_inc"
 
 # depends_onとhealthcheckを使う
 
+depends_onのconditionにservice_healthyを指定するとできます
+
 ドキュメントは以下の通り
 [depends_on](https://docs.docker.com/compose/compose-file/compose-file-v3/#depends_on)
 [healthcheck](https://docs.docker.com/compose/compose-file/compose-file-v3/#healthcheck)
