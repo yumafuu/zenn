@@ -1,5 +1,5 @@
 ---
-title: "docker composeでmysqlの起動を待つ"
+title: "docker composeでdockerizeやwait-for-itなしでmysqlの起動を待つ"
 emoji: "🫸"
 type: "tech"
 topics: ["dockercompose"]
