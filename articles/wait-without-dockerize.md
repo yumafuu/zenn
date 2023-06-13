@@ -3,15 +3,15 @@ title: "docker composeでmysqlの起動を待つ"
 emoji: "🫸"
 type: "tech"
 topics: ["dockercompose"]
-published: false
+published: true
 publication_name: "ispec_inc"
 ---
 
 # モチベーション
 
-dockerizeを使わずにmysqlの起動を待ちたい
+[dockerize](https://github.com/jwilder/dockerize)や[wait-for-it](https://github.com/vishnubob/wait-for-it)を使わずにmysqlの起動を待ちたい
 
-## depends_onとhealthcheckを使う
+# depends_onとhealthcheckを使う
 
 ドキュメントは以下の通り
 [depends_on](https://docs.docker.com/compose/compose-file/compose-file-v3/#depends_on)
@@ -47,4 +47,4 @@ services:
 
 ```
 
-これで[dockerize](https://github.com/jwilder/dockerize)や[wait-for-it](https://github.com/vishnubob/wait-for-it)なしでmysqlの起動を待てるようになった！
+これでdockerizeやwait-for-itなしでmysqlの起動を待てるようになった！
