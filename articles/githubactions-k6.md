@@ -92,7 +92,7 @@ const headers = {
 };
 
 export function setup() {
-  if (__ENV.TOKEN === undefined) {
+  if (__ENV.SOME_SECRET === undefined) {
     throw new Error('TOKEN is undefined')
   }
 }
