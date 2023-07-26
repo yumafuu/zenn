@@ -2,7 +2,7 @@
 title: "GitHub Actionsでk6を動かす"
 emoji: "💩"
 type: "tech"
-topics: ["", "k6"]
+topics: ["githubactions", "k6"]
 published: true
 publication_name: "ispec_inc"
 ---
