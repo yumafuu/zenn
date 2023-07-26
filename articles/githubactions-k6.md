@@ -8,21 +8,17 @@ publication_name: "ispec_inc"
 ---
 
 # モチベーション
-インターネット上で開発者がカジュアルに実行できる環境が欲しかった！ので、GitHub Actionsを使ってみました。
+インターネット上で開発者がカジュアルに実行できる環境が欲しかったので、GitHub Actionsを使ってみました！
 
-<br>
-EC2立てたり、ECSのtaskでやったり、Lambda作ったりも検討しましたが、yaml書くだけのActions最強って結論でした。 (今回はインターネットからパブリックにアクセスできるサーバーに負荷を送るためVPCの中で実行したいとかいう制限もありませんでした)
+k6用のEC2立てたりECSのtask作ったりLambda作ったりも検討しましたが、選ばれたのはyaml書くだけのActionsでした🍵
+(今回はインターネットからパブリックにアクセスできるサーバーに負荷を送るためVPCの中で実行したいなどの制限もありませんでした)
 
-<br>
-k6はjsでシナリオ書けるので好きです(他を使ったことない)
+k6はjsでシナリオ書けるので愛用してます😘
 
 # 実装
 
-## 使うもの
-- [公式が後悔してるActionsのパッケージ]( https://github.com/grafana/k6-action )
+Actionsのファイル
 
-
-## 実装
 ```yaml:k6-basic-loadtest.yaml
 name: K6 Basic LoadTest
 on:
@@ -52,9 +48,14 @@ jobs:
 ```
 
 これだけ、ポイントは `on: workflow_dispatch:` です！
-これするとActionsの画面からボタンひとつで実行できるようになります！
+これするとこんな感じでActionsの画面からボタンひとつで実行できるようになります！
 
 [![Image from Gyazo](https://i.gyazo.com/015d1929c807225bfad28bb0a72567f2.png)](https://gyazo.com/015d1929c807225bfad28bb0a72567f2)
+
+
+
+k6のシナリオファイルです
+jsでかけるのが最高
 
 ```js:k6/workload.js
 
@@ -113,6 +114,5 @@ export default function () {
 同時接続10000人想定の雑なシナリオ
 
 
-あとは `Run workflow` をポチるだけ！
-
-実行結果をどっかに出力して確認するとかやりたい！
+# 今後
+実行結果をどっかに出力して確認するとかやっていきたい
