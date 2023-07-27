@@ -35,7 +35,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Run k6
-        # 公式が後悔してるActionsのパッケージ
+        # 公式が公開してるActionsのパッケージ
         # https://github.com/grafana/k6-action
         uses: grafana/k6-action@v0.3.0
         with:
@@ -43,6 +43,7 @@ jobs:
           filename: k6/workload.js
         env:
           # 最近秘匿じゃない変数をvarsで参照できるようになった
+          # https://docs.github.com/ja/actions/learn-github-actions/variables#using-the-vars-context-to-access-configuration-variable-values
           SOME_VAR: ${{ vars.SOME_VAR }}
           SOME_SECRET: ${{ secrets.SOME_SECRET }}
 ```
