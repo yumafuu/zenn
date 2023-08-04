@@ -76,6 +76,7 @@ Outputs:
 ```
 https://ap-northeast-1.console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?templateURL=https://ispec-public.s3.ap-northeast-1.amazonaws.com/cfn-terraform-init-template.yaml&stackName=TerraformInit
 ```
+https://ap-northeast-1.console.aws.amazon.com/cloudformation/home?region=ap-northeast-1#/stacks/create/review?templateURL=https://ispec-public.s3.ap-northeast-1.amazonaws.com/cfn-terraform-init-template.yaml&stackName=TerraformInit
 
 
 そして作りたいアカウントでAWS consoleにログインしてる状態でURLを踏むと
