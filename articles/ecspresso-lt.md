@@ -14,15 +14,16 @@ ispecのエスプレスタックをご紹介！というタイトルで発表さ
 
 ## YouTube
 アーカイブが残っていますので、ぜひみてみてください！
+fujiwaraさんやsongmuさん、僕以外のLTの発表も素晴らしいお話がたくさん聞けます
 
 https://www.youtube.com/watch?v=Leic9Z4TTec
 
 ## 紹介スタック
 どれも最高に便利なので、使ってみてください！是非スターも⭐️
 
-- [ecspresso](https://github.com/kayac/ecspresso)
-- [ecschedule](https://github.com/songmu/ecschedule)
-- [aqua](https://github.com/aquaproj/aqua)
+- [kayac/ecspresso](https://github.com/kayac/ecspresso)
+- [songmu/ecschedule](https://github.com/songmu/ecschedule)
+- [aquaproj/aqua](https://github.com/aquaproj/aqua)
 
 # 感想
 LTはいいなぁ。 発表できるクオリティにするために、自分の中でさらに理解を深めることができました。
