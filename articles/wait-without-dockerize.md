@@ -1,6 +1,6 @@
 ---
 title: "docker composeでdockerizeやwait-for-itなしでmysqlの起動を待つ"
-emoji: "🫸"
+emoji: "🌈"
 type: "tech"
 topics: ["dockercompose"]
 published: true
