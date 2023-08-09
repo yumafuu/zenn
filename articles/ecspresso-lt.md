@@ -3,7 +3,7 @@ title: "ecspresso MeetUpでLTをしました！ #jawsug_ct"
 emoji: "🦈"
 type: "tech"
 topics: ["aws", "ecspresso", "ecschedule", "aqua"]
-published: false
+published: true
 publication_name: "ispec_inc"
 ---
 
