@@ -2,7 +2,7 @@
 title: "Gatherでも歩くのがしんどいのでテレポートボタンを作った"
 emoji: "☕️"
 type: "tech"
-topics: ["gathertown", "リモートワーク"]
+topics: ["gathertown", "リモートワーク", "scriptautorunner"]
 published: false
 publication_name: "ispec_inc"
 ---
@@ -11,13 +11,13 @@ publication_name: "ispec_inc"
 
 リモートワークを最適化してしまった怠惰なエンジニアの方々(褒めてる)がまず直面する課題が運動不足だと思います。
 
-今回はリモートワークで必要不可欠なバーチャルオフィスでその運動不足を加速される方法をご紹介します！
+今回はリモートワークで必要不可欠なバーチャルオフィスでその運動不足をさらに加速される方法をご紹介します！
 
 # Gatherとは
 リモートワークを支える、可愛いアバターとゲームのような世界観のバーチャルオフィスです！
 [Gather](https://ja.gather.town/features)
 
-ispecでの活用事例を公式に取り上げていただいてたりもします
+ispecでの活用事例を公式に取り上げていただいてたりもします✌️
 
 https://ja.gather.town/blog/jp-ispec
 
@@ -25,7 +25,7 @@ https://ja.gather.town/blog/jp-ispec
 
 ## なぜしたのか
 
-当たり前ですが、Gatherでは移動が発生します
+当たり前ですが、Gatherはオフィスなので移動が発生します
 
 こんな感じ
 
@@ -35,7 +35,7 @@ https://ja.gather.town/blog/jp-ispec
 
 危うくvimの設定を見直してしまうところでした
 
-## 実装
+## 方針
 
 テレポートのボタンを配置します(ブラウザ限定ですが)
 [![Image from Gyazo](https://i.gyazo.com/de5b3dfca6a0d1618cfabb3e0f52b036.png)](https://gyazo.com/de5b3dfca6a0d1618cfabb3e0f52b036)
@@ -44,12 +44,13 @@ https://ja.gather.town/blog/jp-ispec
 gatherはwindowに`game` というObjectを生やしてくれているようで、consoleから色々いじいじできます
 [Document](http://gather-game-client-docs.s3-website-us-west-2.amazonaws.com/classes/Game.html)
 
-今回もこの `game.teleport` 関数を使って実装します
+今回もこの `game.teleport` 関数を使って実装します！
 
-クラメソ様も様々な記事をあげてくださっています 🙏
+この記事は[クラメソ様の記事](https://dev.classmethod.jp/articles/gather-matome-three-api/)の記事からインスパイアを受けました🙏
 
-この記事も[こちら](https://dev.classmethod.jp/articles/gather-matome-three-api/)の記事からインスパイアを受けました。ありがとうございます！
+ありがとうございます！
 
+## 実装
 
 ```js
 const teleportButton = (text, x, y) => {
@@ -91,3 +92,5 @@ UI可愛いですね
 うおおおお！！！！！！！
 
 [![Image from Gyazo](https://i.gyazo.com/80a45b0863dc3390ff6fd23cf58338fb.gif)](https://gyazo.com/80a45b0863dc3390ff6fd23cf58338fb)
+
+これでバーチャル健康診断の値をもっと悪くすることができました🤦‍♂️
