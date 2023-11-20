@@ -80,6 +80,13 @@ e.appendChild(document.createElement('br'));
 document.getElementById('root').appendChild(e);
 ```
 
+teleportButtonに渡す値はconsoleで以下を実行すると調べられる
+
+```js
+// 今自分のアバターがいる位置を取得する
+{ x: game.getMyPlayer().x, y: game.getMyPlayer().y }
+```
+
 こちらをページロード時点で実行すれば、テレポート用のボタンが生成されるというわけです。
 毎回consoleで実行するのは、信じられないくらいめんどくさいので[ScriptAutoRunner](https://chrome.google.com/webstore/detail/scriptautorunner/gpgjofmpmjjopcogjgdldidobhmjmdbm?hl=ja)で実行してもらいます。
 
