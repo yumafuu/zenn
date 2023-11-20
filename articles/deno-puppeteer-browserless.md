@@ -17,7 +17,7 @@ publication_name: "ispec_inc"
 
 https://www.browserless.io/
 
-```code:js
+```js
 import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
 
 const browser = await puppeteer.connect({
@@ -35,6 +35,6 @@ await browser.close();
 
 ```
 
-```code:bash
+```bash
 $ deno run -A index.js
 ```

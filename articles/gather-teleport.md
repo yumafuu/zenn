@@ -97,6 +97,10 @@ UI可愛いですね
 
 上のjsをはっ付けておきます
 
+[![Image from Gyazo](https://i.gyazo.com/8a17e6b8c2b458e0d43914b1ad803059.png)](https://gyazo.com/8a17e6b8c2b458e0d43914b1ad803059)
+
+httpでアクセスできる場合は,URLを貼るだけもいけます(raw.githubusercontent.comだとなぜか動かなかったからjsdelivrで)
+
 # 完成系
 
 うおおおお！！！！！！！
