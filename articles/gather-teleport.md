@@ -57,8 +57,10 @@ gatherはwindowに`game` というObjectを生やしてくれているようで�
 const teleportButton = (text, x, y) => {
   const btn = document.createElement('button');
   btn.innerHTML = text;
+  // 半透明のいい感じの色にする
   btn.style = `border: none; outline: none; font: inherit; color: inherit; background-color: rgba(51, 51, 51, 0.4); color: #fff; padding: 5px 12px;`
   btn.onclick = (() => {
+    // 今いるmapのIDを取得
     const mapId = window.game.getMyPlayer().map;
     window.game.teleport(mapId, x, y);
   })
