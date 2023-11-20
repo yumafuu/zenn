@@ -1,9 +1,9 @@
 ---
 title: "Gatherでも歩くのがしんどいのでテレポートボタンを作った"
-emoji: "☕️"
+emoji: "🏃"
 type: "tech"
 topics: ["gathertown", "リモートワーク", "scriptautorunner"]
-published: false
+published: true
 publication_name: "ispec_inc"
 ---
 
