@@ -52,6 +52,7 @@ gatherはwindowに`game` というObjectを生やしてくれているようで�
 
 ## 実装
 
+クリックしたら `game.teleport` を呼び出すDOMを`position: absolute` で配置します(わりかし雑な実装です)
 ```js
 const teleportButton = (text, x, y) => {
   const btn = document.createElement('button');
@@ -93,4 +94,4 @@ UI可愛いですね
 
 [![Image from Gyazo](https://i.gyazo.com/80a45b0863dc3390ff6fd23cf58338fb.gif)](https://gyazo.com/80a45b0863dc3390ff6fd23cf58338fb)
 
-これでバーチャル健康診断の値をもっと悪くすることができました🤦‍♂️
+これでバーチャル健康診断の値をもっと悪くすることができました
