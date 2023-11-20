@@ -80,7 +80,7 @@ e.appendChild(document.createElement('br'));
 document.getElementById('root').appendChild(e);
 ```
 
-teleportButtonに渡す値はconsoleで以下を実行すると調べられる
+teleportButtonに渡す値はconsoleで以下を実行すると調べられます
 
 ```js
 // 今自分のアバターがいる位置を取得する
