@@ -40,6 +40,8 @@ https://ja.gather.town/blog/jp-ispec
 テレポートのボタンを配置します(ブラウザ限定ですが)
 [![Image from Gyazo](https://i.gyazo.com/de5b3dfca6a0d1618cfabb3e0f52b036.png)](https://gyazo.com/de5b3dfca6a0d1618cfabb3e0f52b036)
 
+追記(11/21):  調べたらGatherアプリはElectron製だったのでアプリの人でもコンソール開いてコード貼り付けてできました
+
 
 gatherはwindowに`game` というObjectを生やしてくれているようで、consoleから色々いじいじできます
 [Document](http://gather-game-client-docs.s3-website-us-west-2.amazonaws.com/classes/Game.html)
