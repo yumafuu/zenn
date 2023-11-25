@@ -1,5 +1,5 @@
 ---
-title: "最速でスクレイピングする方法"
+title: "Denoとbrowserlessで最速でスクレイピングしてみる"
 emoji: "🧑🏼‍💻"
 type: "tech"
 topics: ["deno", "puppeteer", "browserless"]
@@ -9,11 +9,15 @@ publication_name: "ispec_inc"
 
 # スクレイピングはめんどくさい
 
-スクレイピングしようとするとChromeDriverのinstallとか色々やらないといけないことが多くて、めんどくさいです。
+以前にこんな記事を書きましたが、
+https://zenn.dev/ispec_inc/articles/lambda-puppeteer
+
+手順が多すぎて諦めたくなります、、、
+サーバーでブラウザを操作したいだけなのに！！
 
 # Deno + browserless
 
-ここで
+ここで browserless という
 
 https://www.browserless.io/
 
@@ -26,10 +30,8 @@ const browser = await puppeteer.connect({
 
 const page = await browser.newPage();
 
-const path = "/tmp/screenshot.png"
-
-await page.goto('https://example.com');
-await page.screenshot({ path });
+await page.goto('https://ispec.tech');
+await page.screenshot({ path: "/tmp/ispec.png" });
 
 await browser.close();
 
