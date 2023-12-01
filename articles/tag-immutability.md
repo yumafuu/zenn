@@ -69,7 +69,7 @@ jobs:
 
 2. empty commitを使う
 
-gitには変更してなくてもcommitできます
+gitは変更してなくてもcommitできます
 
 ```bash
 $ git commit --allow-empty
