@@ -13,4 +13,4 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - run: |
-          echo ${{ github.sha }}-$(date +'%Y-%m-%d %H:%M'
+          echo ${{ github.sha }}-$(date +'%Y%m%d%H%M')
