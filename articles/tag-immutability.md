@@ -2,8 +2,8 @@
 title: "ECRのTag Immutablityを突破するTips"
 emoji: "🏋"
 type: "tech"
-topics: ["git", "aws", "ecr"]
-published: false
+topics: ["git", "aws", "ecr", "githubactions"]
+published: true
 publication_name: "ispec_inc"
 ---
 
@@ -47,6 +47,7 @@ ECRのmuttableを
 
 1. そもそも同じタグでビルドできなくしてしまう
 
+ビルド時刻をtagに含めることでtagの衝突を回避します
 
 ```yaml
 jobs:
@@ -63,7 +64,7 @@ jobs:
           context: .
           dockerfile: ./api/docker/prod/Dockerfile
           ecr_repo: ${{ env.ECR_API_REPOSITORY }}
-          tag: ${{ github.sha }} # ←ここ
+          tag: ${{ github.sha }}$(date +'%Y%m%d%H%M') # ←ここ
 ```
 
 2. empty commitを使う
@@ -76,3 +77,6 @@ $ git commit --allow-empty
 でできます
 
 yamlが怖くていじれないという方には手っ取り早くておすすめです！
+
+
+良きActionsライフを！
