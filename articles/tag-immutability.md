@@ -79,4 +79,4 @@ $ git commit --allow-empty
 yamlが怖くていじれないという方には手っ取り早くておすすめです！
 
 
-良きActionsライフを！
+良きActions & ECR ライフを！
