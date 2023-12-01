@@ -41,7 +41,7 @@ ERROR: tag invalid: The image tag '6736f93336b8244a55cae3a99106db7af15dda34' alr
 
 と怒られてしましました。
 
-ECRのmuttableを
+怒りのあまりtag muttableにしてやろうかと思いましたが、大人なので我慢しました。
 
 # 解決策
 
