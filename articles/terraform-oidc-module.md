@@ -3,7 +3,7 @@ title: "AWSのOIDC with GithubのTerraform module作ってみた"
 emoji: "🤙"
 type: "tech"
 topics: ["terraform", "AWS", "oidc"]
-published: false
+published: true
 publication_name: "ispec_inc"
 ---
 
@@ -83,7 +83,7 @@ resource "aws_iam_role_policy_attachment" "policy_attachment" {
 
 ### README
 
-terraform-docsというterraform moduleのdocument生成ツールがあります。
+terraform-docsというterraform moduleのdocument生成ツールがあります
 
 https://github.com/terraform-docs/terraform-docs/
 
@@ -101,5 +101,6 @@ moduleのREADMEとしてはこれで十分でしょう！
 # 終わりに
 
 思っているよりもめちゃくちゃ簡単に公開できました！
+定期的なアプデとかCI整備とか色々ちゃんとやって行きたいです
 
 たくさん作りたくなっちゃいますが、地獄を見ないように設計には十分気をつけよう...✌️
