@@ -21,6 +21,14 @@ ECSでサーバーを立てる時の環境変数に入れる値の置き場と�
 https://github.com/YumaFuu/denosm
 
 denoとBrewでインストールできます
+```bash
+# Deno
+$ deno install -A https://deno.land/x/denosm/index.js -n sm -f
+
+# Homebrew
+$ brew install YumaFuu/tap/sm
+```
+
 
 なんとdenoがシングルバイナリにコンパイルできるのでBrewでも配信することにしました
 (denoでコンパイルしたバイナリはdeno自信を含むのでクソデカくなります)
