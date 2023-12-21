@@ -1,5 +1,5 @@
 ---
-title: "SSM Parameter StoreのFuzzy Finderを作った"
+title: "DenoでSSM Parameter StoreのFuzzy Finderを作った"
 emoji: "🦖"
 type: "tech"
 topics: ["deno", "ssm", "aws", "dax", "cliffy", "fzf", "ghr"]
