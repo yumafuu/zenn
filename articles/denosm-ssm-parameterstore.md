@@ -1,5 +1,5 @@
 ---
-title: "AWS SSM Parameter StoreをFuzzy FindできるCLIツール denosm"
+title: "SSM Parameter StoreのFuzzy Finderを作った"
 emoji: "🦖"
 type: "tech"
 topics: ["deno", "ssm", "aws"]
