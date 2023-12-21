@@ -30,7 +30,7 @@ $ brew install YumaFuu/tap/sm
 ```
 
 
-なんとdenoがシングルバイナリにコンパイルできるのでBrewでも配信することにしました
+なんとdenoがシングルバイナリにコンパイルできちゃうのでBrewでも配信することにしました
 (denoでコンパイルしたバイナリはdeno自信を含むのでクソデカくなります)
 
 
@@ -54,7 +54,7 @@ import $ from "https://deno.land/x/dax/mod.ts";
 const list = await $`aws ssm describe-parameters --profile ${profile}`.json();
 ```
 
-こんな感じでaws cliの結果をjsonをjsでゴニョゴニョしています
+こんな感じでaws cliの結果のjsonをjsでゴニョゴニョしています
 
 zennでもいくつかの記事が上がっていますので、要チェック！！
 
@@ -70,10 +70,10 @@ DenoでCLIツールを作る際のフレームワークです
 
 https://github.com/c4spar/deno-cliffy
 
-smコマンドでは、Command, tty, pressを使っています。
+smコマンドでは、cliコマンドの作成とtty, keypressを使っています。
 
 ```javascript
-import { colors, tty, } from "https://deno.land/x/cliffy@v1.0.0-rc.3/ansi/mod.ts";
+import { colors, tty } from "https://deno.land/x/cliffy@v1.0.0-rc.3/ansi/mod.ts";
 
 // ...
 tty.cursorHide();
