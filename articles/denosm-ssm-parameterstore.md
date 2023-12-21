@@ -12,24 +12,23 @@ publication_name: "ispec_inc"
 ECSでサーバーを立てる時の環境変数に入れる値の置き場として AWS Systems Manager Parameter Storeが使えますが、値の確認がめんどくさい！
 
 ってことでFuzzy FindできるCLIを作りました🦖
-(aws cliに依存してます)
 
 # 作ったもの
 
-https://github.com/YumaFuu/denosm
-
-- 使い方
 
 ![Usage](https://github.com/YumaFuu/denosm/assets/32477095/03f42c87-0307-4476-81c1-c27484ed29bf)
 
+https://github.com/YumaFuu/denosm
+
 denoとBrewでインストールできます
 
-なんとdenoがシングルバイナリにコンパイルできるのでBrewでも配信することにしました(denoでコンパイルしたバイナリはdeno自信を含むのでクソデカくなります)
+なんとdenoがシングルバイナリにコンパイルできるのでBrewでも配信することにしました
+(denoでコンパイルしたバイナリはdeno自信を含むのでクソデカくなります)
 
 
 # 使用技術
 
-ベースはみんな大好き[ デノ](https://deno.com/)(ディノが正しいらしい) です。
+ベースはみんな大好き[ デノ](https://deno.com/)(ディノが正しいらしい) です🦖
 そのシンプルさから愛用していますが、特にこういったCLIツールを作るのにはもってこいです
 
 ## Dax
