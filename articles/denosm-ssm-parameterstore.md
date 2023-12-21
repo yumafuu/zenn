@@ -2,7 +2,7 @@
 title: "SSM Parameter StoreのFuzzy Finderを作った"
 emoji: "🦖"
 type: "tech"
-topics: ["deno", "ssm", "aws"]
+topics: ["deno", "ssm", "aws", "dax", "cliffy", "fzf", "ghr"]
 published: false
 publication_name: "ispec_inc"
 ---
@@ -20,7 +20,7 @@ https://github.com/YumaFuu/denosm
 
 - 使い方
 
-https://github.com/YumaFuu/denosm/assets/32477095/03f42c87-0307-4476-81c1-c27484ed29bf
+![Usage](https://github.com/YumaFuu/denosm/assets/32477095/03f42c87-0307-4476-81c1-c27484ed29bf)
 
 denoとBrewでインストールできます
 
