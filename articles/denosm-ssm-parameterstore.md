@@ -49,7 +49,7 @@ const list = await $`aws ssm describe-parameters --profile ${profile}`.json();
 
 こんな感じでaws cliの結果をjsonをjsでゴニョゴニョしています
 
-zennでもいくつかの記事が上がっていますので、要チェックやで
+zennでもいくつかの記事が上がっていますので、要チェック！！
 
 https://zenn.dev/hashrock/articles/5dae2e171533a6
 
@@ -61,15 +61,42 @@ DenoでCLIツールを作る際のフレームワークです
 
 [https://cliffy.io/](Cliffy)
 
+https://github.com/c4spar/deno-cliffy
+
 smコマンドでは、Command, tty, pressを使っています。
 
+```javascript
+import { colors, tty, } from "https://deno.land/x/cliffy@v1.0.0-rc.3/ansi/mod.ts";
+
+// ...
+tty.cursorHide();
+
+// ...
+tty
+    .cursorTo(0, 0)
+    .eraseScreen();
+
+// ...
+highlighted += colors.bold.blue(s);
+
+```
+
 promptやtable描画などもあるのでDenoでCLIツールを作る時はこれ使えば間違い無いです✌️
+
 
 
 ## fzf-for-js
 
 [fzf](https://github.com/junegunn/fzf)のアルゴリズムのJS実装です
-fzfはコマンドラインで愛用していますが、今回はDenoなので[ esm.sh ](https://esm.sh/)で配信されている[fzf-for-js](https://github.com/ajitid/fzf-for-js)をつかました
+fzfはコマンドラインで愛用していますが、今回はDenoなので[ esm.sh ](https://esm.sh/)で配信されている[fzf-for-js](https://github.com/ajitid/fzf-for-js)を使いました
+
+
+```javascript
+const fzf = new Fzf(options);
+let hits = fzf.find(search);
+```
+といった感じでかなり簡単に曖昧検索が実装できます
+
 
 ## ghr
 
