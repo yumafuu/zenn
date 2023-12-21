@@ -3,7 +3,7 @@ title: "SSM Parameter StoreのFuzzy Finderを作った"
 emoji: "🦖"
 type: "tech"
 topics: ["deno", "ssm", "aws", "dax", "cliffy", "fzf", "ghr"]
-published: false
+published: true
 publication_name: "ispec_inc"
 ---
 
