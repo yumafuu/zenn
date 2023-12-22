@@ -12,6 +12,10 @@ publication_name: "ispec_inc"
 こんにちは!
 ispecのVPoEのいしかわです
 
+Deno Advent Calendar 2023の22日目の記事です！
+
+https://qiita.com/advent-calendar/2023/deno
+
 ECSでサーバーを立てる時の環境変数に入れる値の置き場として AWS Systems Manager Parameter Storeが使えますが、値の確認がめんどくさい！
 
 ってことでFuzzy FindできるCLIを作りました🦖
