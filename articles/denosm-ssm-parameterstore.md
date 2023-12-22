@@ -12,7 +12,7 @@ publication_name: "ispec_inc"
 こんにちは!
 ispecのVPoEのいしかわです
 
-Deno Advent Calendar 2023の22日目の記事です！
+Deno Advent Calendar 2023の21日目の記事です！
 
 https://qiita.com/advent-calendar/2023/deno
 
