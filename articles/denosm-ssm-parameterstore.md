@@ -7,7 +7,10 @@ published: true
 publication_name: "ispec_inc"
 ---
 
-# モチベーション
+# はじめに
+
+こんにちは!
+ispecのVPoEのいしかわです
 
 ECSでサーバーを立てる時の環境変数に入れる値の置き場として AWS Systems Manager Parameter Storeが使えますが、値の確認がめんどくさい！
 
