@@ -22,6 +22,7 @@ ECSでサーバーを立てる時の環境変数に入れる値の置き場と�
 
 # 作ったもの
 
+SSM Parameter Storeの FuzzyFindや値の取得、作成、更新ができます
 
 ![Usage](https://github.com/YumaFuu/denosm/assets/32477095/03f42c87-0307-4476-81c1-c27484ed29bf)
 
@@ -36,7 +37,6 @@ $ deno install -A https://deno.land/x/denosm/index.ts -n sm -f
 $ brew install YumaFuu/tap/sm
 ```
 
-できることはREADMEに書いてあるとおりですがssmのparameter storeに対して FuzzyFind, List, Get, Put をCLIから行うことができます
 
 # 使用技術
 
