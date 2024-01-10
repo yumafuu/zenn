@@ -1,5 +1,5 @@
 ---
-title: "DenoでSSM Parameter StoreのFuzzy Finderを作った"
+title: "DenoでSSM Parameter StoreのCLIツール作った"
 emoji: "🦖"
 type: "tech"
 topics: ["deno", "ssm", "aws", "dax", "cliffy", "fzf", "ghr"]
@@ -36,9 +36,7 @@ $ deno install -A https://deno.land/x/denosm/index.ts -n sm -f
 $ brew install YumaFuu/tap/sm
 ```
 
-
-denoはシングルバイナリにコンパイルできちゃうのでBrewでも配信することにしました
-
+できることはREADMEに書いてあるとおりですがssmのparameter storeに対して FuzzyFind, List, Get, Put をCLIから行うことができます
 
 # 使用技術
 
