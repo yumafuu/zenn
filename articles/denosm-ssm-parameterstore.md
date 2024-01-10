@@ -30,7 +30,7 @@ https://github.com/YumaFuu/denosm
 denoとBrewでインストールできます
 ```bash
 # Deno
-$ deno install -A https://deno.land/x/denosm/index.js -n sm -f
+$ deno install -A https://deno.land/x/denosm/index.ts -n sm -f
 
 # Homebrew
 $ brew install YumaFuu/tap/sm
