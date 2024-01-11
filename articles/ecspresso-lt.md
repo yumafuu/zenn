@@ -1,5 +1,5 @@
 ---
-title: "ecspresso MeetUpでLTをしました！ #jawsug_ct"
+title: "ecspresso MeetUpで登壇しました！ #jawsug_ct"
 emoji: "🦈"
 type: "idea"
 topics: ["aws", "ecspresso", "ecschedule", "aqua", "jawsug"]
