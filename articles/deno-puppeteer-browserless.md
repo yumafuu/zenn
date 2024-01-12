@@ -1,5 +1,5 @@
 ---
-title: "Denoとbrowserlessで最速でスクレイピングしてみる"
+title: "browserlessで最速でスクレイピングしてみる with Deno"
 emoji: "🧑🏼‍💻"
 type: "tech"
 topics: ["deno", "puppeteer", "browserless"]
@@ -13,13 +13,19 @@ publication_name: "ispec_inc"
 https://zenn.dev/ispec_inc/articles/lambda-puppeteer
 
 手順が多すぎて諦めたくなります、、、
-サーバーでブラウザを操作したいだけなのに！！
 
-# Deno + browserless
+できたらクソデカchromiumをinstallしたくない！！
+ブラウザを操作したいだけなのに！！
 
-ここで browserless という
+# browserless とは
 
-https://www.browserless.io/
+(browserless)[https://www.browserless.io] を使います
+
+[![Image from Gyazo](https://i.gyazo.com/243ec95fed8073a86379373d672a712f.png)](https://gyazo.com/243ec95fed8073a86379373d672a712f)
+
+browserlessはヘッドレスchromiumのAPIを提供してくれるサービスです
+
+つまりchromiumをインストールしていない環境でもpuppeteerを起動できるということです！
 
 ```js
 import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
@@ -34,9 +40,58 @@ await page.goto('https://ispec.tech');
 await page.screenshot({ path: "/tmp/ispec.png" });
 
 await browser.close();
+```
+
+
+# 応用編
+
+## 外形監視
+
+puppeteerは外形監視によく使われると思いますので、やってみます
+
+弊社のホームページのスクショをslackに投稿する例です
+
+Deno DeployにCronが乗ったのでまじで以下のファイルをpushするだけで動きます(もちろんbrowserlessとslack webhookの設定は必要です)
+
+Deno Cronの詳細は (こちら)[https://deno.com/blog/cron]
+
+```js
+// 環境変数に BROWSERLESS_TOKEN, SLACK_TOKENをセットしています
+
+import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
+import { WebClient } from "npm:@slack/web-api";
+
+const main = async () => {
+    const browserlessToken = Deno.env.get("BROWSERLESS_TOKEN");
+    const slackToken = Deno.env.get("SLACK_TOKEN");
+    if (!browserlessToken || !slackToken) {
+        throw "[ERROR] `BROWSERLESS_TOKEN` and `SLACK_TOKEN` is required"
+    }
+    const browser = await puppeteer.connect({
+      browserWSEndpoint: `wss://chrome.browserless.io?token=${browserlessToken}`,
+    });
+
+    const page = await browser.newPage();
+
+    await page.goto('https://ispec.tech');
+    await page.screenshot({ path: "/tmp/ispec.png" });
+
+    await browser.close();
+
+    const client = new WebClient(slackToken);
+    await app.client.uploadV2({
+        channel_id: #your-channel-id",
+        file: "/tmp/ispec.png",
+        filename: "ispec.png",
+    });
+}
+
+// 毎日朝9時(JST)に起動
+Deno.cron("Daily Cron morning", "0 0 * * *", async () => {
+    await main();
+});
 
 ```
 
-```bash
-$ deno run -A index.js
-```
+結果はこんな感じできちんと投稿されました！✌️ (アニメーションのせいかなんか白いですが、また別の話)
+[![Image from Gyazo](https://i.gyazo.com/8c4ce7039786c831a84423b53f8b5104.png)](https://gyazo.com/8c4ce7039786c831a84423b53f8b5104)
