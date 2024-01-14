@@ -1,5 +1,5 @@
 ---
-title: "browserlessで最速でスクレイピングしてみる with Deno Deploy"
+title: "browserlessで最速スクレイピングをする with Deno Deploy"
 emoji: "🧑🏼‍💻"
 type: "tech"
 topics: ["deno", "puppeteer", "browserless"]
