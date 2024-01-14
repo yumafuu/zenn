@@ -60,6 +60,7 @@ Deno Cronの詳細は [ こちら ](https://deno.com/blog/cron)
 // 環境変数に BROWSERLESS_TOKEN, SLACK_TOKENをセットしています
 import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
 import { WebClient } from "npm:@slack/web-api";
+import { Buffer } from 'node:buffer';
 
 const main = async () => {
     const browserlessToken = Deno.env.get("BROWSERLESS_TOKEN");
@@ -74,14 +75,19 @@ const main = async () => {
     const page = await browser.newPage();
 
     await page.goto('https://ispec.tech');
-    await page.screenshot({ path: "/tmp/ispec.png" });
+    const arr = await page.screenshot();
+
+    // slack/web-apiのfiles.uploadV2ではfile意外にfileBufferとReadStreamを渡せる
+    // Deno Deployはファイル書き込みができない
+    // https://slack.dev/node-slack-sdk/web-api
+    const buf = Buffer.from(arr);
 
     await browser.close();
 
     const client = new WebClient(slackToken);
-    await app.client.uploadV2({
+    await client.files.uploadV2({
         channel_id: "your-channel-id",
-        file: "/tmp/ispec.png",
+        file: buf,
         filename: "ispec.png",
     });
 }
