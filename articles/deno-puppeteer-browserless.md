@@ -16,10 +16,12 @@ https://zenn.dev/ispec_inc/articles/lambda-puppeteer
 
 サーバレスにブラウザを操作したいだけなのに！！
 
-# browserless とは
+そこで[ browserless ](https://www.browserless.io) というSaasを使ってchromiumの設定不要でスクレイピングをする方法をご紹介します
 
-[ browserless ](https://www.browserless.io) を使います
 
+# browserless
+
+## なんぞ？
 [![Image from Gyazo](https://i.gyazo.com/243ec95fed8073a86379373d672a712f.png)](https://gyazo.com/243ec95fed8073a86379373d672a712f)
 
 browserlessはヘッドレスchromiumのAPIを提供してくれるサービスです
@@ -28,13 +30,19 @@ browserlessはヘッドレスchromiumのAPIを提供してくれるサービス�
 
 LPのPlayGroundで好きに実行できるので試してみてください
 
-↓ みたいな感じでブラウザ起動時の`browserWSEndpoint` オプションでウェブソケットのURLを指定するだけで利用できます
+↓ みたいな感じでブラウザ起動時の`browserWSEndpoint` オプションでウェブソケットのURLを指定するだけで利用できます(コードを動かすサーバーは自分で用意する必要があります)
 
 ```js
 const browser = await puppeteer.connect({
   browserWSEndpoint: `wss://chrome.browserless.io?token=${Deno.env.get("BROWSERLESS_TOKEN")}`,
 });
 ```
+## 料金
+
+[Introducing Unit-based Pricing](https://www.browserless.io/blog/2022/12/08/unit-based-pricing/)
+
+Unitベースの課金でpuppeteerなら28秒が1unitとなり、1000unitまでは無料なので、個人の利用なら無料で十分に活用できると思います
+
 
 
 # 実用編
