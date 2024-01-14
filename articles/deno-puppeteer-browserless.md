@@ -28,21 +28,12 @@ browserlessはヘッドレスchromiumのAPIを提供してくれるサービス�
 
 LPのPlayGroundで好きに実行できるので試してみてください
 
-↓ みたいな感じで
+↓ みたいな感じでブラウザ起動時の`browserWSEndpoint` オプションでウェブソケットのURLを指定するだけで利用できます
 
 ```js
-import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
-
 const browser = await puppeteer.connect({
   browserWSEndpoint: `wss://chrome.browserless.io?token=${Deno.env.get("BROWSERLESS_TOKEN")}`,
 });
-
-const page = await browser.newPage();
-
-await page.goto('https://ispec.tech');
-await page.screenshot({ path: "/tmp/ispec.png" });
-
-await browser.close();
 ```
 
 
@@ -56,13 +47,13 @@ Deno Deployでやってみます
 
 Deno DeployにCronが乗ったのでまじで以下のファイルをpushするだけで動きます(もちろんbrowserlessとslack webhookの設定は必要です)
 
-Deno Deployはファイル書き込みができないのですが、SlackApiがイメージのBufferも受け付けてくれるのでありがたく使います
+Deno Deployはファイル書き込みができないのですが、@slack/web-apiの画像アップロードAPIがBufferも受け付けてくれるのでありがたく使います
 
 
 参考
 
-- [Announcing Deno Cron](https://deno.com/blog/cron)
-- [node: specifiers ](https://docs.deno.com/runtime/manual/node/node_specifiers)
+- Announcing Deno Cron(https://deno.com/blog/cron)
+- node: specifiers (https://docs.deno.com/runtime/manual/node/node_specifiers)
 
 ```js
 // 環境変数に BROWSERLESS_TOKEN, SLACK_TOKENをセットしています
@@ -85,8 +76,8 @@ const main = async () => {
     await page.goto('https://ispec.tech');
     const arr = await page.screenshot();
 
-    // slack/web-apiのfiles.uploadV2ではfile意外にfileBufferとReadStreamを渡せる
     // https://slack.dev/node-slack-sdk/web-api
+    // slack/web-apiのfiles.uploadV2ではfile意外にfileBufferとReadStreamを渡せる
     const buf = Buffer.from(arr);
 
     await browser.close();
@@ -112,6 +103,6 @@ Deno.cron("Daily Cron morning", "0 0 * * *", async () => {
 
 # 終わりに
 
-Denoとbrowserlessは最高ですね
+Deno + browserlessの破壊力が伝わったら嬉しいです
 
 人間がやるべきではない仕事はゴンゴン自動化していきましょう!
