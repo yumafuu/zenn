@@ -12,20 +12,21 @@ publication_name: "ispec_inc"
 以前にこんな記事を書きましたが、
 https://zenn.dev/ispec_inc/articles/lambda-puppeteer
 
-手順が多すぎて諦めたくなります、、、
+これでも手順が多すぎてしんどいです、、
 
-できたらクソデカchromiumをinstallしたくない！！
-ブラウザを操作したいだけなのに！！
+サーバレスにブラウザを操作したいだけなのに！！
 
 # browserless とは
 
-(browserless)[https://www.browserless.io] を使います
+[ browserless ](https://www.browserless.io) を使います
 
 [![Image from Gyazo](https://i.gyazo.com/243ec95fed8073a86379373d672a712f.png)](https://gyazo.com/243ec95fed8073a86379373d672a712f)
 
 browserlessはヘッドレスchromiumのAPIを提供してくれるサービスです
 
-つまりchromiumをインストールしていない環境でもpuppeteerを起動できるということです！
+つまりchromiumをインストールしなくてもpuppeteerを起動できちゃうんです！
+
+LPのPlayGroundで好きに実行できるので試してみてください
 
 ```js
 import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
@@ -43,7 +44,7 @@ await browser.close();
 ```
 
 
-# 応用編
+# 実用編
 
 ## 外形監視
 
@@ -53,11 +54,10 @@ puppeteerは外形監視によく使われると思いますので、やって�
 
 Deno DeployにCronが乗ったのでまじで以下のファイルをpushするだけで動きます(もちろんbrowserlessとslack webhookの設定は必要です)
 
-Deno Cronの詳細は (こちら)[https://deno.com/blog/cron]
+Deno Cronの詳細は [ こちら ](https://deno.com/blog/cron)
 
 ```js
 // 環境変数に BROWSERLESS_TOKEN, SLACK_TOKENをセットしています
-
 import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
 import { WebClient } from "npm:@slack/web-api";
 
@@ -80,7 +80,7 @@ const main = async () => {
 
     const client = new WebClient(slackToken);
     await app.client.uploadV2({
-        channel_id: #your-channel-id",
+        channel_id: "your-channel-id",
         file: "/tmp/ispec.png",
         filename: "ispec.png",
     });
@@ -95,3 +95,10 @@ Deno.cron("Daily Cron morning", "0 0 * * *", async () => {
 
 結果はこんな感じできちんと投稿されました！✌️ (アニメーションのせいかなんか白いですが、また別の話)
 [![Image from Gyazo](https://i.gyazo.com/8c4ce7039786c831a84423b53f8b5104.png)](https://gyazo.com/8c4ce7039786c831a84423b53f8b5104)
+
+
+# 終わりに
+
+Denoとbrowserlessは最高ですね
+
+人間がやるべきではない仕事はゴンゴン自動化していきましょう!
