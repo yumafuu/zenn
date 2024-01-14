@@ -61,8 +61,8 @@ Deno Deployはファイル書き込みができないのですが、SlackApiが�
 
 参考
 
-- [Announcing Deno Cron] (https://deno.com/blog/cron)
-- [node: specifiers ] (https://docs.deno.com/runtime/manual/node/node_specifiers)
+- [Announcing Deno Cron](https://deno.com/blog/cron)
+- [node: specifiers ](https://docs.deno.com/runtime/manual/node/node_specifiers)
 
 ```js
 // 環境変数に BROWSERLESS_TOKEN, SLACK_TOKENをセットしています
