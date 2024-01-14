@@ -1,5 +1,5 @@
 ---
-title: "browserlessで最速でスクレイピングしてみる with Deno"
+title: "browserlessで最速でスクレイピングしてみる with Deno Deploy"
 emoji: "🧑🏼‍💻"
 type: "tech"
 topics: ["deno", "puppeteer", "browserless"]
@@ -7,7 +7,7 @@ published: false
 publication_name: "ispec_inc"
 ---
 
-# スクレイピングはめんどくさい
+# スクレイピングはまだまだめんどくさい
 
 以前にこんな記事を書きましたが、
 https://zenn.dev/ispec_inc/articles/lambda-puppeteer
@@ -27,6 +27,8 @@ browserlessはヘッドレスchromiumのAPIを提供してくれるサービス�
 つまりchromiumをインストールしなくてもpuppeteerを起動できちゃうんです！
 
 LPのPlayGroundで好きに実行できるので試してみてください
+
+↓ みたいな感じで
 
 ```js
 import puppeteer from "https://deno.land/x/puppeteer@16.2.0/mod.ts";
@@ -48,13 +50,19 @@ await browser.close();
 
 ## 外形監視
 
-puppeteerは外形監視によく使われると思いますので、やってみます
+Deno Deployでやってみます
 
-弊社のホームページのスクショをslackに投稿する例です
+弊社のホームページのスクショを定期的にslackに投稿する例です
 
 Deno DeployにCronが乗ったのでまじで以下のファイルをpushするだけで動きます(もちろんbrowserlessとslack webhookの設定は必要です)
 
-Deno Cronの詳細は [ こちら ](https://deno.com/blog/cron)
+Deno Deployはファイル書き込みができないのですが、SlackApiがイメージのBufferも受け付けてくれるのでありがたく使います
+
+
+参考
+
+- [Announcing Deno Cron] (https://deno.com/blog/cron)
+- [node: specifiers ] (https://docs.deno.com/runtime/manual/node/node_specifiers)
 
 ```js
 // 環境変数に BROWSERLESS_TOKEN, SLACK_TOKENをセットしています
@@ -78,7 +86,6 @@ const main = async () => {
     const arr = await page.screenshot();
 
     // slack/web-apiのfiles.uploadV2ではfile意外にfileBufferとReadStreamを渡せる
-    // Deno Deployはファイル書き込みができない
     // https://slack.dev/node-slack-sdk/web-api
     const buf = Buffer.from(arr);
 
@@ -99,7 +106,7 @@ Deno.cron("Daily Cron morning", "0 0 * * *", async () => {
 
 ```
 
-結果はこんな感じできちんと投稿されました！✌️ (アニメーションのせいかなんか白いですが、また別の話)
+結果はこんな感じできちんと投稿されました！✌️ (アニメーションのせいかなんか白いですが、まぁよし)
 [![Image from Gyazo](https://i.gyazo.com/8c4ce7039786c831a84423b53f8b5104.png)](https://gyazo.com/8c4ce7039786c831a84423b53f8b5104)
 
 
