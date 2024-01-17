@@ -2,7 +2,7 @@
 title: "DenoでSSM Parameter StoreのCLIツール作った"
 emoji: "🦖"
 type: "tech"
-topics: ["deno", "ssm", "aws", "dax", "cliffy", "fzf", "ghr"]
+topics: ["deno", "aws", "cli", "ghr"]
 published: true
 publication_name: "ispec_inc"
 ---
