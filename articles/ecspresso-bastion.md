@@ -138,25 +138,17 @@ sleepだけすればいいので alpineからsleepだけコピってきた [yuma
 ```bash:run.sh
 AWS_PROFILE=your-profile
 ECSPRESSO_CONFIG=ecspresso.yaml
-CLUSTER=your-cluster
-FAMILY=rdb-bastion
 RDB_HOST=rdb-cluster.cluster-xxxxxxxxx.ap-northeast-1.rds.amazonaws.com
 
-# --no-waitで起動することでコンテナが起動したら次の処理に進める
-ecspresso run --config $ECSPRESSO_CONFIG --no-wait
+# --wait-untilで起動するまで待つ
+ecspresso run --config $ECSPRESSO_CONFIG --wait-until=running
 
 # 最新のタスクのIDを取得
 id=$(
-    AWS_PROFILE=your-profile aws ecs list-tasks \
-    --cluster $CLUSTER --family $FAMILY \
-    --query taskArns[0] --output text | cut -d'/' -f3 \
+    AWS_PROFILE=your-profile \
+    ecspresso tasks --config $ECSPRESSO_CONFIG --output=json | \
+    jq -r '.containers[0].taskArn | split("/")[2]' | head -1 \
 )
-
-# ここでコンテナがRUNNINGになるまで待つ
-echo Wait until task running..
-aws ecs wait tasks-running \
-  --cluster $CLUSTER \
-  --tasks $id
 
 # ポートフォワードする
 ecspresso exec \
@@ -167,6 +159,9 @@ ecspresso exec \
   --host $RDB_HOST \
   --id $id
 ```
+
+* 追記(1/20)
+--wait-untilとtasksコマンドを@fujiwaraさんにコメントで教えていだだきました！ありがとうございます🙇‍♂️
 
 
 bashで実行したら20秒くらいでTaskが起動します
