@@ -177,7 +177,7 @@ $ bash ./run.sh
 
 Waiting for connections...
 ```
-が出たらlocalhostにアクセスできるようになっています！
+Waiting for connectionsが出たらlocalhostにアクセスできるようになっています！
 
 ```bash
 $ mysql -uuser -ppassword --host 127.0.0.1
