@@ -169,7 +169,12 @@ ecspresso exec \
 ```
 
 
-```
+bashで実行したら20秒くらいでTaskが起動します
+
+```bash
+$ bash ./run.sh
+# ....
+
 Waiting for connections...
 ```
 が出たらlocalhostにアクセスできるようになっています！
