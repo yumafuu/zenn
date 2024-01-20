@@ -61,6 +61,8 @@ SSM AgentをバインドマウントしてSSMのセッションマネージャ�
 
 ```
 
+Roleを作成するサンプルスクリプト
+
 https://github.com/YumaFuu/ecspresso-portforward/blob/main/create-task-role.sh
 
 実行ロールは特になんのアクションも許可する必要ありません
@@ -113,7 +115,7 @@ sleepだけすればいいので alpineからsleepだけコピってきた [yuma
 
 {
   launchType: "FARGATE",
-  enableExecuteCommand: true, // ポートフォワードするのに必要！
+  enableExecuteCommand: true, // ECS Execをするのに必要！
   networkConfiguration: {
     awsvpcConfiguration: {
       assignPublicIp: "DISABLED",
