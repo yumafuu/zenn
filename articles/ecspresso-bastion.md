@@ -36,7 +36,7 @@ CLI生まれCLI育ちの僕でもRDBはGUIクライアントを使いたいの�
 
 TaskRoleに以下のSSMのアクセス権限が必要ですので事前にアタッチしておきます
 
-SSM AgentをバインドマウントしてSSMのセッションマネージャーとの通信するらしいです
+SSM AgentをバインドマウントしてSSMのセッションマネージャーと通信するらしいです
 
 [参考: デバッグ用にAmazon ECS Exec を使用](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)
 
