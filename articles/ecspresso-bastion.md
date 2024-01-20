@@ -29,7 +29,7 @@ task_definition: task-def.jsonnet
 sleepだけすればいいので alpineからsleepだけコピってきた [yumafuu/sleepy](https://github.com/YumaFuu/docker-sleepy) を使います
 嫌な方はsleepできるお好きなイメージに差し替えてください
 
-```jsonnet
+```json:task-def.jsonnet
 {
   family: "rdb-bastion",
   cpu: "256",
@@ -54,7 +54,7 @@ sleepだけすればいいので alpineからsleepだけコピってきた [yuma
 
 サービスは使いませんが、ネットワークやECS Execの設定を記述します
 
-```jsonnet:service-def.jsonnet
+```json:service-def.jsonnet
 
 {
   launchType: "FARGATE",
@@ -135,7 +135,7 @@ admin@172.16.3.11 [(none)] 02:35 pm>
 ```
 
 
-## ソースコード
+# ソースコード
 
 色々にまとめておきましたので詳しくみたい方はこちらから！
 
