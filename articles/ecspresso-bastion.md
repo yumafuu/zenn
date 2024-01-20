@@ -12,7 +12,7 @@ publication_name: "ispec_inc"
 ECS Fargate経由でプライベートSubnetにあるRDSにアクセスする方法をまとめます
 
 使うツールは以下の通り
-- こんな素晴らしいツールあったの？でお馴染み[ecspresso](https://github.com/kayac/ecspresso)
+- こんな素晴らしいツールあったの？でお馴染み [ecspresso](https://github.com/kayac/ecspresso)
 - [ECS Exec](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)のポートフォワード機能
 
 最終的にlocalhostに向けて以下のようにアクセスできるようになります
@@ -84,6 +84,8 @@ task_definition: task-def.jsonnet
 ## task-def.jsonnet
 
 sleepだけすればいいので alpineからsleepだけコピってきた [yumafuu/sleepy](https://github.com/YumaFuu/docker-sleepy) を使います
+約900KBなので軽くて良きです◎
+
 嫌な方はsleepできるお好きなイメージに差し替えてください
 
 ```json:task-def.jsonnet
