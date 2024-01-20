@@ -82,7 +82,7 @@ task_definition: task-def.jsonnet
 
 ## task-def.jsonnet
 
-sleepだけすればいいので alpineからsleepだけコピってきた [yumafuu/sleepy](https://github.com/YumaFuu/docker-sleepy) を使います
+sleepだけすればいいので alpineからsleepが入ってるbusyboxだけコピってきた [yumafuu/sleepy](https://github.com/YumaFuu/docker-sleepy) を使います
 約900KBなので軽くて良きです◎
 
 嫌な方はsleepできるお好きなイメージに差し替えてください
