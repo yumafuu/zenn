@@ -194,7 +194,7 @@ admin@172.16.3.11 [(none)] 02:35 pm>
 
 # ソースコード
 
-色々にまとめておきましたので詳しくみたい方はこちらから！
+以下にまとめておきましたので詳しくみたい方はこちらから！
 
 https://github.com/YumaFuu/ecspresso-portforward
 
