@@ -17,7 +17,7 @@ publication_name: "ispec_inc"
 
 TaskRoleに以下のSSM アクセス権限が必要ですので事前にアタッチしておきます
 
-[参考](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
+[参考: デバッグ用にAmazon ECS Exec を使用](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)
 
 ```json:policy.json
 {
