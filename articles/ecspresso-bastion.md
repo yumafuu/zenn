@@ -9,13 +9,30 @@ publication_name: "ispec_inc"
 
 # はじめに
 
-今回はこんな素晴らしいツールあったの？でお馴染み[ecspresso](https://github.com/kayac/ecspresso)で[ECS Exec](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)のポートフォワード機能を使ってプライベートSubnetにあるRDSをlocalhostでアクセスする方法をまとめます
+ECS Fargate経由でプライベートSubnetにあるRDSにアクセスする方法をまとめます
+
+使うツールは以下の通り
+- 今回はこんな素晴らしいツールあったの？でお馴染み[ecspresso](https://github.com/kayac/ecspresso)
+- [ECS Exec](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)のポートフォワード機能
+
+最終的にlocalhostに向けて以下のようにアクセスできるようになります
+
+```bash
+$ mysql -uuser -ppassword --host 127.0.0.1
+```
+
+CLI生まれCLI育ちの僕でもRDBはGUIクライアントを使いたいのでこの方法はとても有用だと思います(sshの場合はCLIでしかアクセスできない)
+
+
+# ECS Execとは
+
+
 
 # 実装
 
 ## IAM Role
 
-TaskRoleに以下のSSM アクセス権限が必要ですので事前にアタッチしておきます
+TaskRoleに以下のSSMのアクセス権限が必要ですので事前にアタッチしておきます
 
 [参考: デバッグ用にAmazon ECS Exec を使用](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)
 
@@ -42,6 +59,8 @@ TaskRoleに以下のSSM アクセス権限が必要ですので事前にアタ�
 https://github.com/YumaFuu/ecspresso-portforward/blob/main/create-task-role.sh
 
 実行ロールは特になんのアクションも許可する必要ありません
+
+[amazon-ecs-exec-checker](https://github.com/aws-containers/amazon-ecs-exec-checker)でECS Execが使えるかの確認ができます
 
 
 ## ecspresso.yaml
