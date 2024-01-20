@@ -9,7 +9,7 @@ publication_name: "ispec_inc"
 
 # はじめに
 
-ECS Fargate経由でプライベートSubnetにあるRDSにアクセスする方法をまとめます
+ECS Fargate経由でプライベートなSubnetにあるRDSにアクセスする方法をまとめます
 
 使うツールは以下の通り
 - こんな素晴らしいツールあったの？でお馴染み [ecspresso](https://github.com/kayac/ecspresso)
