@@ -191,6 +191,7 @@ Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
 admin@172.16.3.11 [(none)] 02:35 pm>
 ```
 
+ちなみにcommandで指定した秒数でTaskが死ぬので、適宜変更が必要です
 
 # ソースコード
 
