@@ -136,7 +136,6 @@ sleepだけすればいいので alpineからsleepだけコピってきた [yuma
 実行のためのshellスクリプトです
 
 ```bash:run.sh
-AWS_PROFILE=your-profile
 ECSPRESSO_CONFIG=ecspresso.yaml
 RDB_HOST=rdb-cluster.cluster-xxxxxxxxx.ap-northeast-1.rds.amazonaws.com
 
@@ -145,7 +144,6 @@ ecspresso run --config $ECSPRESSO_CONFIG --wait-until=running
 
 # 最新のタスクのIDを取得
 id=$(
-    AWS_PROFILE=your-profile \
     ecspresso tasks --config $ECSPRESSO_CONFIG --output=json | \
     jq -r '.containers[0].taskArn | split("/")[2]' | head -1 \
 )
