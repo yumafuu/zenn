@@ -1,8 +1,8 @@
 ---
-title: "ecsressoで作るRDSの踏み台Fargate"
+title: "ecspressoで作るRDSの踏み台Fargate"
 emoji: "💨"
 type: "tech"
-topics: ["ECS", "aws", "ecsresso", "fargate"]
+topics: ["ECS", "aws", "ecspresso", "fargate"]
 published: true
 publication_name: "ispec_inc"
 ---
