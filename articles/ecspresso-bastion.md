@@ -1,81 +1,64 @@
 ---
-title: "ecsressoで作るFargateポートフォワード踏み台"
+title: "ecsressoで作るRDSの踏み台Fargate"
 emoji: "🥷"
 type: "tech"
-topics: ["ECS", "ecsresso", "fargate"]
+topics: ["ECS","aws", "ecsresso", "fargate"]
 published: false
 publication_name: "ispec_inc"
 ---
 
-# 踏み台サーバーがだるい
+# はじめに
 
-PrivateなSubnetにあるAuroraにアクセスしたくなることは稀に頻繁にときどきよくあることだと思います。
-
-以前までの弊社では踏み台用のEC2を同じSubnetに立てておいてSSMのsession機能を使ってsshしていました。
-
-まぁスマートじゃないし、慣れないCLIでのDB操作を強いられる運用に嫌気がさしていたので、ECSに乗せてポートフォワードを行い、手元のGUIクライアントから操作できるようにしてしまおうというものです！
-
+今回はこんな素晴らしいツールあったの？でお馴染み[ecspresso](https://github.com/kayac/ecspresso)で[ECS Exec](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)のポートフォワード機能を使ってプライベートSubnetにあるRDSをlocalhostでアクセスする方法をまとめます
 
 # 実装
 
-## ecsressoを使う
+### ecspresso.yaml
 
-簡単のためにecsresso pluginなどは省略しています
+いつものyamlです
 
-詳しい運用は以下で紹介してます
-
-https://zenn.dev/ispec_inc/articles/ecspresso-lt
-
-
-```yaml
-# bastion/ecspresso.yaml
+```yaml:ecspresso.yaml
 region: ap-northeast-1
-cluster: my-super-cluster
-service: dev-bastion
+cluster: your-cluster
 service_definition: service-def.jsonnet
 task_definition: task-def.jsonnet
-timeout: "20m0s"
 ```
 
-```jsonnet
-// bastion/task-def.jsonnet
+### task-def.jsonnet
 
+sleepだけすればいいので alpineからsleepだけコピってきた [yumafuu/sleepy](https://github.com/YumaFuu/docker-sleepy) を使います
+嫌な方はsleepできるお好きなイメージに差し替えてください
+
+```jsonnet
 {
   family: "rdb-bastion",
   cpu: "256",
   memory: "512",
   executionRoleArn: "arn:aws:iam::000000000000:role/bastion-exec-role"
   taskRoleArn: "arn:aws:iam::000000000000:role/bastion-task-role"
-  requiresCompatibilities: ["FARGATE"],
   networkMode: "awsvpc",
   containerDefinitions: [
     {
       name: "bastion",
-      image: "alpine:latest",
+      image: "yumafuu/sleepy:latest",
       command: [
-        "sleep", "600", # 10分だけ起動する
+        "600", # 10分だけ起動する
       ],
-      logConfiguration: {
-        logDriver: 'awslogs',
-        options: {
-          'awslogs-group': '/aws/ecs/cluster/dev/pcpk-api/ecs',
-          'awslogs-region': 'ap-northeast-1',
-          'awslogs-stream-prefix': 'bastion-',
-        },
-      },
     }
   ],
 }
 
 ```
 
+### service-def.jsonnet
 
-```jsonnet
-// bastion/service-def.jsonnet
+サービスは使いませんが、ネットワークやECS Execの設定を記述します
+
+```jsonnet:service-def.jsonnet
 
 {
   launchType: "FARGATE",
-  enableExecuteCommand: true, // ポートフォワードするのに必要
+  enableExecuteCommand: true, // ポートフォワードするのに必要！
   networkConfiguration: {
     awsvpcConfiguration: {
       assignPublicIp: "DISABLED",
@@ -91,27 +74,34 @@ timeout: "20m0s"
 
 ```
 
+### run.sh
 
-```bash
+実行のためのshellスクリプトです
+
+```bash:run.sh
 AWS_PROFILE=your-profile
-ECSPRESSO_CONFIG=bastion/ecspresso.yaml
+ECSPRESSO_CONFIG=ecspresso.yaml
 CLUSTER=your-cluster
 FAMILY=rdb-bastion
 RDB_HOST=rdb-cluster.cluster-xxxxxxxxx.ap-northeast-1.rds.amazonaws.com
 
+# --no-waitで起動することでコンテナが起動したら次の処理に進める
 ecspresso run --config $ECSPRESSO_CONFIG --no-wait
 
+# 最新のタスクのIDを取得
 id=$(
-AWS_PROFILE=your-profile aws ecs list-tasks \
+    AWS_PROFILE=your-profile aws ecs list-tasks \
     --cluster $CLUSTER --family $FAMILY \
     --query taskArns[0] --output text | cut -d'/' -f3 \
 )
 
+# ここでコンテナがRUNNINGになるまで待つ
 echo Wait until task running..
 aws ecs wait tasks-running \
   --cluster $CLUSTER \
   --tasks $id
 
+# ポートフォワードする
 ecspresso exec \
   --port-forward \
   --port 3306 \
@@ -121,4 +111,39 @@ ecspresso exec \
   --id $id
 ```
 
+
+```
+Waiting for connections...
+```
+が出たらlocalhostにアクセスできるようになっています！
+
+```bash
+$ mysql -uuser -ppassword --host 127.0.0.1
+Welcome to the MySQL monitor.  Commands end with ; or \g.
+Your MySQL connection id is 247708
+Server version: 8.0.28 Source distribution
+
+Copyright (c) 2000, 2023, Oracle and/or its affiliates.
+
+Oracle is a registered trademark of Oracle Corporation and/or its
+affiliates. Other names may be trademarks of their respective
+owners.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+admin@172.16.3.11 [(none)] 02:35 pm>
+```
+
+
+## ソースコード
+
+色々にまとめておきましたので詳しくみたい方はこちらから！
+
+https://github.com/YumaFuu/ecspresso-portforward
+
+# おわりに
+
+他にもecspressoの運用を以下で紹介してますので是非見てみてください！
+
+https://zenn.dev/ispec_inc/articles/ecspresso-lt
 
