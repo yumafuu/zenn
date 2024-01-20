@@ -29,6 +29,7 @@ CLI生まれCLI育ちの僕でもRDBはGUIクライアントを使いたいの�
 実行中のコンテナに入ってコマンドを実行できるもの(docker execのECS版)です。
 今回はその中のポートフォワード機能を使います
 
+[参考: デバッグ用にAmazon ECS Exec を使用](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)
 
 # 実装
 
@@ -37,8 +38,6 @@ CLI生まれCLI育ちの僕でもRDBはGUIクライアントを使いたいの�
 TaskRoleに以下のSSMのアクセス権限が必要ですので事前にアタッチしておきます
 
 SSM AgentをバインドマウントしてSSMのセッションマネージャーと通信するらしいです
-
-[参考: デバッグ用にAmazon ECS Exec を使用](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)
 
 
 ```json:policy.json
