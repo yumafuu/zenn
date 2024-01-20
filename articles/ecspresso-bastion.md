@@ -1,8 +1,8 @@
 ---
 title: "ecsressoで作るRDSの踏み台Fargate"
-emoji: "🥷"
+emoji: "💨"
 type: "tech"
-topics: ["ECS","aws", "ecsresso", "fargate"]
+topics: ["ECS", "aws", "ecsresso", "fargate"]
 published: false
 publication_name: "ispec_inc"
 ---
@@ -13,7 +13,38 @@ publication_name: "ispec_inc"
 
 # 実装
 
-### ecspresso.yaml
+## IAM Role
+
+TaskRoleに以下のSSM アクセス権限が必要ですので事前にアタッチしておきます
+
+[参考](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/task_execution_IAM_role.html)
+
+```json:policy.json
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "AllowObjectAccess",
+      "Effect": "Allow",
+      "Action": [
+        "ssmmessages:CreateControlChannel",
+        "ssmmessages:CreateDataChannel",
+        "ssmmessages:OpenControlChannel",
+        "ssmmessages:OpenDataChannel",
+      ],
+      "Resource": "*"
+    }
+  ]
+}
+
+```
+
+https://github.com/YumaFuu/ecspresso-portforward/blob/main/create-task-role.sh
+
+実行ロールは特になんのアクションも許可する必要ありません
+
+
+## ecspresso.yaml
 
 いつものyamlです
 
@@ -24,7 +55,7 @@ service_definition: service-def.jsonnet
 task_definition: task-def.jsonnet
 ```
 
-### task-def.jsonnet
+## task-def.jsonnet
 
 sleepだけすればいいので alpineからsleepだけコピってきた [yumafuu/sleepy](https://github.com/YumaFuu/docker-sleepy) を使います
 嫌な方はsleepできるお好きなイメージに差し替えてください
@@ -42,7 +73,7 @@ sleepだけすればいいので alpineからsleepだけコピってきた [yuma
       name: "bastion",
       image: "yumafuu/sleepy:latest",
       command: [
-        "600", # 10分だけ起動する
+        "600", // 10分だけ起動する
       ],
     }
   ],
@@ -50,7 +81,7 @@ sleepだけすればいいので alpineからsleepだけコピってきた [yuma
 
 ```
 
-### service-def.jsonnet
+## service-def.jsonnet
 
 サービスは使いませんが、ネットワークやECS Execの設定を記述します
 
@@ -74,7 +105,7 @@ sleepだけすればいいので alpineからsleepだけコピってきた [yuma
 
 ```
 
-### run.sh
+## run.sh
 
 実行のためのshellスクリプトです
 
@@ -142,6 +173,8 @@ admin@172.16.3.11 [(none)] 02:35 pm>
 https://github.com/YumaFuu/ecspresso-portforward
 
 # おわりに
+
+ecspresso本当に素晴らしい、、🤙
 
 他にもecspressoの運用を以下で紹介してますので是非見てみてください！
 
