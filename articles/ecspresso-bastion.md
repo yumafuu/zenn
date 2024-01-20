@@ -12,7 +12,7 @@ publication_name: "ispec_inc"
 ECS Fargate経由でプライベートSubnetにあるRDSにアクセスする方法をまとめます
 
 使うツールは以下の通り
-- 今回はこんな素晴らしいツールあったの？でお馴染み[ecspresso](https://github.com/kayac/ecspresso)
+- こんな素晴らしいツールあったの？でお馴染み[ecspresso](https://github.com/kayac/ecspresso)
 - [ECS Exec](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)のポートフォワード機能
 
 最終的にlocalhostに向けて以下のようにアクセスできるようになります
