@@ -140,10 +140,10 @@ sleepだけすればいいので alpineからsleepが入ってるbusyboxだけ�
 ECSPRESSO_CONFIG=ecspresso.yaml
 RDB_HOST=rdb-cluster.cluster-xxxxxxxxx.ap-northeast-1.rds.amazonaws.com
 
-# --wait-untilで起動するまで待つ
+# --wait-until=runningでTaskが起動するまで待つ
 ecspresso run --config $ECSPRESSO_CONFIG --wait-until=running
 
-# 最新のタスクのIDを取得
+# 最新のTask IDを取得
 id=$(
     ecspresso tasks --config $ECSPRESSO_CONFIG --output=json | \
     jq -r '.containers[0].taskArn | split("/")[2]' | head -1 \
