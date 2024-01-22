@@ -11,6 +11,8 @@ publication_name: "ispec_inc"
 
 ECS Fargate経由でプライベートなSubnetにあるRDSにアクセスする方法をまとめます
 
+使う時だけTaskを起動するので、余計にEC2インスタンスを起動しておく必要がなくなったり、パッケージの管理等もなくなったりいいことづくしです✌️
+
 使うツールは以下の通り
 - こんな素晴らしいツールあったの？でお馴染み [ecspresso](https://github.com/kayac/ecspresso)
 - [ECS Exec](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html)のポートフォワード機能
