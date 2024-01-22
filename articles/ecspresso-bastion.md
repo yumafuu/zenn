@@ -90,7 +90,7 @@ sleepだけすればいいので C言語で書いたsleepするだけのイメ�
 
 ```json:task-def.jsonnet
 {
-  family: "rdb-bastion",
+  family: "rds-bastion",
   cpu: "256",
   memory: "512",
   executionRoleArn: "arn:aws:iam::000000000000:role/bastion-task-exec-role"
@@ -137,7 +137,7 @@ sleepだけすればいいので C言語で書いたsleepするだけのイメ�
 実行のためのshellスクリプトです
 
 ```bash:run.sh
-RDB_HOST=rdb-cluster.cluster-xxxxxxxxx.ap-northeast-1.rds.amazonaws.com
+RDS_HOST=rds-cluster.cluster-xxxxxxxxx.ap-northeast-1.rds.amazonaws.com
 
 # --wait-until=runningでTaskが起動するまで待つ
 ecspresso run --wait-until=running
@@ -154,7 +154,7 @@ ecspresso exec \
   --port-forward \
   --port 3306 \
   --local-port 3306 \
-  --host $RDB_HOST \
+  --host $RDS_HOST \
   --id $id
 ```
 
