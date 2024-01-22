@@ -38,6 +38,7 @@ CLI生まれCLI育ちの僕でもRDBはGUIクライアントを使いたいの�
 TaskRoleに以下のSSMのアクセス権限が必要ですので事前にアタッチしておきます
 
 SSM AgentをバインドマウントしてSSMのセッションマネージャーと通信するらしいです
+[参考: アーキテクチャ](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/userguide/ecs-exec.html#ecs-exec-architecture)
 
 
 ```json:policy.json
@@ -92,7 +93,7 @@ sleepだけすればいいので C言語で書いたsleepするだけのイメ�
   family: "rdb-bastion",
   cpu: "256",
   memory: "512",
-  executionRoleArn: "arn:aws:iam::000000000000:role/bastion-exec-role"
+  executionRoleArn: "arn:aws:iam::000000000000:role/bastion-task-exec-role"
   taskRoleArn: "arn:aws:iam::000000000000:role/bastion-task-role"
   networkMode: "awsvpc",
   containerDefinitions: [
@@ -119,7 +120,6 @@ sleepだけすればいいので C言語で書いたsleepするだけのイメ�
   enableExecuteCommand: true, // ECS Execをするのに必要！
   networkConfiguration: {
     awsvpcConfiguration: {
-      assignPublicIp: "DISABLED",
       securityGroups: [
         "sg-00000000000000000", // RDSへの通信を許可しておいてね
       ],
@@ -137,16 +137,16 @@ sleepだけすればいいので C言語で書いたsleepするだけのイメ�
 実行のためのshellスクリプトです
 
 ```bash:run.sh
-ECSPRESSO_CONFIG=ecspresso.yaml
 RDB_HOST=rdb-cluster.cluster-xxxxxxxxx.ap-northeast-1.rds.amazonaws.com
 
 # --wait-until=runningでTaskが起動するまで待つ
-ecspresso run --config $ECSPRESSO_CONFIG --wait-until=running
+ecspresso run --wait-until=running
 
 # 最新のTask IDを取得
 id=$(
-    ecspresso tasks --config $ECSPRESSO_CONFIG --output=json | \
-    jq -r '.containers[0].taskArn | split("/")[2]' | head -1 \
+    ecspresso tasks --output=json | \
+    jq -r '.containers[0].taskArn | split("/")[2]' | \
+    head -1 \
 )
 
 # ポートフォワードする
@@ -154,7 +154,6 @@ ecspresso exec \
   --port-forward \
   --port 3306 \
   --local-port 3306 \
-  --config $ECSPRESSO_CONFIG \
   --host $RDB_HOST \
   --id $id
 ```
