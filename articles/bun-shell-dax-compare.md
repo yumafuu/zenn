@@ -122,6 +122,17 @@ console.log(result); // 2\n
 Bun Shellはまだアルファ版のため基本的なまだ機能しかありませんが、十分Shellの代用をできるレベルのものだと思います
 
 特徴的なのは`.bun.sh`という拡張子をBun Shellで実行できます。
+```bash
+$ cat script.bun.sh
+echo Hello, Bun!
+ls
+
+$ bun ./script.bun.sh
+Hello, Bun!
+script.bun.sh
+bun.db
+index.js
+```
 既存のシェルスクリプトを置き換える時に便利なのかな、、？(あんまり用途がわかってない)
 
 参照
