@@ -41,7 +41,7 @@ https://github.com/oven-sh/bun/blob/main/src/shell/shell.zig
 # DenoのDaxと開発者体験で比較してみる
 
 Bun Shellと同等の機能がDenoの[dax](https://github.com/dsherret/dax)で提供されています。
-これも(deno_task_shell)[https://github.com/denoland/deno_task_shell]という独自のパーサーを使っていてクラスプラットフォームで動作します。
+これも[deno_task_shell](https://github.com/denoland/deno_task_shell)という独自のパーサーを使っていてクラスプラットフォームで動作します。
 
 筆者はDenoが大好きでしたが、Bun Shellをきっかけにいろいろ調べて見たらbunよくね？ってなったので比較して見たいと思います。
 
@@ -51,6 +51,8 @@ https://zenn.dev/ispec_inc/articles/denosm-ssm-parameterstore
 ## 機能
 
 基本的には両者大きく変わらず、基本的なシェルコマンド(`ls`, `echo`, `mv`, `|`, `>`など)とヘルパーメソッドの提供がされています
+
+### dax
 
 ```js:dax.js
 import $ from "https://deno.land/x/dax/mod.ts";
@@ -71,12 +73,45 @@ console.log(result.prop); // 5
 ```
 
 daxはだいぶ高機能です。
-特徴的なのはインタラクション(`$.prompt`, `$.select`, `$.confirm`など)に関するメソッドが提供されていることです
-簡単なCLIツールはdaxだけで組み立てることができます
+特徴的なのはインタラクション(`$.prompt`, `$.select`, `$.confirm`, `$.progress`など)に関するメソッドが提供されていることです
+CLIツールならdaxだけで組み立てることができます
 
 ```js:ui.js
-```
+import $ from "https://deno.land/x/dax@0.38.0/mod.ts";
 
+const options = [
+  { ja: "吉村家", en: "yoshimuraya" },
+  { ja: "杉田家", en: "sugitaya" },
+  { ja: "たかさご家", en: "takasagoya" },
+]
+
+const index = await $.select({
+  message: "What's your favourite shop?",
+  options: options.map((o) => o.ja),
+});
+
+const selected = options[index]
+
+let shop
+const pb = $.progress("Fetching...");
+await pb.with(async () => {
+  const res = await fetch(`https://ramen-api.dev/shops/${selected.en}`)
+  shop = (await res.json()).shop
+});
+
+const img = shop.photos[0].url
+await $`curl -s ${img} -o ${selected.en}.jpg && wezterm imgcat ${selected.en}.jpg`
+const result = await $.confirm({
+  message: `${selected.ja}を食べ行きますか?`,
+  default: true,
+});
+
+console.log(result);
+```
+[![Image from Gyazo](https://i.gyazo.com/84b8be94dfadcd84355723c858e1eb7d.gif)](https://gyazo.com/84b8be94dfadcd84355723c858e1eb7d)
+
+
+### Bun
 
 ```js:bun.js
 import { $ } from "bun";
@@ -128,7 +163,7 @@ import { readFileSync } from "node:fs";
 
 ### Bun
 
-Bunには[autoimport](https://bun.sh/docs/runtime/autoimport)機能があり、node_modulesが存在しなかったら勝手に`bun install` してくれてグローバルにキャッシュしてくれます。
+Bunには[autoimport](https://bun.sh/docs/runtime/autoimport)機能があり、node_modulesが存在しなかったら勝手にインストールしてくれてグローバルにキャッシュしてくれます。
 この時node_modulesは作られません！！
 
 またBunはNodeとの完全な互換を目指しているので、多くのnodeのapiがビルトインで使えます
@@ -170,7 +205,9 @@ $ ls -l deno-bin bun-bin
 
 どちらもだいぶ大きいですがDenoの方が約1.5倍大きいです。
 
-Denoはnpmのパッケージも含め、外部パッケージをコンパイルできるのでそこは現状優位ですね
+Bunがどうかは分かりませんが、DenoでできたバイナリはDeno自身を内包しているので大きくなっているらしいです
+
+Denoはnpmのパッケージも含め、外部パッケージをコンパイルできるのでそこは現状優位ですね！
 
 
 # おわりに
@@ -186,6 +223,6 @@ Bun Shellをはじめとして両者ともに開発がめちゃくちゃ活発�
 
 クロスプラットフォームBun肉まん
 
-![](https://pbs.twimg.com/media/GEasPb1bMAAlfNs?format=jpg)
-![](https://pbs.twimg.com/media/GEaslBDaIAAdePq?format=png)
-![](https://pbs.twimg.com/media/GEas4KIaoAAUibJ?format=png)
+![](https://pbs.twimg.com/media/GEasPb1bMAAlfNs?format=png&name=360x360)
+![](https://pbs.twimg.com/media/GEaslBDaIAAdePq?format=png&name=360x360)
+![](https://pbs.twimg.com/media/GEas4KIaoAAUibJ?format=png&name=360x360)
