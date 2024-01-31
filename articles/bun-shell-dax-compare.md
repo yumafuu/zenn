@@ -4,6 +4,7 @@ emoji: "🧄"
 type: "tech"
 topics: ["bun", "deno", "dax"]
 published: true
+publication_name: "ispec_inc"
 ---
 
 # Bun Shellが出た
