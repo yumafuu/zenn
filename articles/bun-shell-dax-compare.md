@@ -54,7 +54,7 @@ https://zenn.dev/ispec_inc/articles/denosm-ssm-parameterstore
 
 ### dax
 
-```js:dax.js
+```js:basic.js
 import $ from "https://deno.land/x/dax/mod.ts";
 
 await $`echo 5`; // 5
@@ -76,7 +76,7 @@ daxはだいぶ高機能です。
 特徴的なのはインタラクション(`$.prompt`, `$.select`, `$.confirm`, `$.progress`など)に関するメソッドが提供されていることです
 CLIツールならdaxだけで組み立てることができます
 
-```js:ui.js
+```js:cli.js
 import $ from "https://deno.land/x/dax@0.38.0/mod.ts";
 
 const options = [
@@ -103,10 +103,12 @@ console.log(result);
 ```
 [![Image from Gyazo](https://i.gyazo.com/84b8be94dfadcd84355723c858e1eb7d.gif)](https://gyazo.com/84b8be94dfadcd84355723c858e1eb7d)
 
+参照
+- [dax](https://github.com/dsherret/dax?tab=readme-ov-file)
 
 ### Bun
 
-```js:bun.js
+```js:basic.js
 import { $ } from "bun";
 
 await $`echo 5`; // 5
@@ -119,9 +121,11 @@ console.log(result); // 2\n
 
 Bun Shellはまだアルファ版のため基本的なまだ機能しかありませんが、十分Shellの代用をできるレベルのものだと思います
 
-*参照元*
+特徴的なのは`.bun.sh`という拡張子をBun Shellで実行できます。
+既存のシェルスクリプトを置き換える時に便利なのかな、、？(あんまり用途がわかってない)
+
+参照
 - [Bun Shell](https://bun.sh/docs/runtime/shell)
-- [dax](https://github.com/dsherret/dax?tab=readme-ov-file)
 
 ちなみに、daxはBun Shellの発表してすぐにリダイレクトやパイプ処理のサポートをリリースしていました💨
 https://github.com/dsherret/dax/releases/tag/0.38.0
