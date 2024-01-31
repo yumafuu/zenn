@@ -10,31 +10,94 @@ published: false
 
 https://x.com/bunjavascript/status/1748587391433253044?s=20
 
+JavaScript, TypeScriptでShellが記述可能になるものです!
 [google/zx](https://github.com/google/zx)がbun本体に取り込まれたような感じですね！
 
 
 # 何が嬉しいのか
 
 ## Shellを書かなくていい
-Bashはツラいです。
-JavaScriptの世界でShellでやりたいことが
+
+Bashはツラい
+ifで条件分岐するのも一苦労です
+
+JavaScriptは読み書きできる人が多いのでShellの代わりにするには持ってこいだと思います
 
 
 ## 型の恩恵
-TypeScriptがそのまま実行可能なので、型が使えます。
+
+TypeScriptがそのまま実行可能なので、型が使えます！
+
+動的型付けアレルギーの人にも納得して使ってもらえます
 
 ## クロスプラットフォーム
 
-# DenoのDaxと開発者体験で比較してみる
+Mac, Linux, Windowsで動きます。
 
-筆者はDenoが大好きでしたが、Bun Shellをきっかけにいろいろ調べて見たらbunよくね？ってなったので比較して見たいと思います。
+自作のパーサが実装されていて、OSの差分を吸収しているポイですね(zig全くわからん)
+
+https://github.com/oven-sh/bun/blob/main/src/shell/shell.zig
+
+# DenoのDaxと開発者体験で比較してみる
 
 Bun Shellと同等の機能がDenoの[dax](https://github.com/dsherret/dax)で提供されています。
 これも(deno_task_shell)[https://github.com/denoland/deno_task_shell]という独自のパーサーを使っていてクラスプラットフォームで動作します。
 
+筆者はDenoが大好きでしたが、Bun Shellをきっかけにいろいろ調べて見たらbunよくね？ってなったので比較して見たいと思います。
+
+ps) 自分はdaxを使ってAWS SSMのCLIツールを作成したことがあります
+https://zenn.dev/ispec_inc/articles/denosm-ssm-parameterstore
 
 ## 機能
-できることは大きく変わらないです
+
+基本的には両者大きく変わらず、基本的なシェルコマンド(`ls`, `echo`, `mv`, `|`, `>`など)とヘルパーメソッドの提供がされています
+
+```js:dax.js
+import $ from "https://deno.land/x/dax/mod.ts";
+
+await $`echo 5`; // 5
+
+// outputting 1 to stdout and running a sub process
+await $`echo 1 && deno run main.ts`;
+
+
+// outputs
+const result = await $`echo 1`.text();
+console.log(result); // 1
+
+const result = await $`echo '{ "prop": 5 }'`.json();
+console.log(result.prop); // 5
+
+```
+
+daxはだいぶ高機能です。
+特徴的なのはインタラクション(`$.prompt`, `$.select`, `$.confirm`など)に関するメソッドが提供されていることです
+簡単なCLIツールはdaxだけで組み立てることができます
+
+```js:ui.js
+```
+
+
+```js:bun.js
+import { $ } from "bun";
+
+await $`echo 5`; // 5
+const welcome = await $`echo "Hello World!"`.text();
+console.log(welcome); // Hello World!\n
+
+const result = await $`echo "Hello World!" | wc -w`.text();
+console.log(result); // 2\n
+```
+
+Bun Shellはまだアルファ版のため基本的なまだ機能しかありませんが、十分Shellの代用をできるレベルのものだと思います
+
+*参照元*
+- [Bun Shell](https://bun.sh/docs/runtime/shell)
+- [dax](https://github.com/dsherret/dax?tab=readme-ov-file)
+
+ちなみに、daxはBun Shellの発表してすぐにリダイレクトやパイプ処理のサポートをリリースしていました💨
+https://github.com/dsherret/dax/releases/tag/0.38.0
+
 
 ## 外部パッケージ
 
@@ -68,6 +131,12 @@ import { readFileSync } from "node:fs";
 Bunには[autoimport](https://bun.sh/docs/runtime/autoimport)機能があり、node_modulesが存在しなかったら勝手に`bun install` してくれてグローバルにキャッシュしてくれます。
 この時node_modulesは作られません！！
 
+またBunはNodeとの完全な互換を目指しているので、多くのnodeのapiがビルトインで使えます
+
+こちらで詳しく互換性が紹介されています
+https://bun.sh/docs/runtime/nodejs-apis
+
+
 ```js:bun.js
 // Bun Shell
 import { $ } from "bun"
@@ -75,38 +144,48 @@ import { $ } from "bun"
 // npmパッケージ
 import sqlite3 from "sqlite3"
 
-// Bun ビルトイン
+// Bun ビルトイン(コンパイル可能)
 import db from "./bun.db" with { type: "sqlite" }
 
-// nodeモジュールは何もせず動く
-// 互換性はこちら: https://bun.sh/docs/runtime/nodejs-apis
+// nodeモジュールは基本何もせず動く
 ```
 
 ## バイナリサイズ
 CLIツールとして配布したい時にユーザーにランライムを要求したくない(されたくない)ですが、両者ともにスタンドアロンのバイナリにコンパイル可能です
 
-現状BunのAutoImportはcompileには使えないので注意です
-
 
 ```bash
 # Deno
-$ deno compile -A deno-dax.js
+$ echo 'console.log("Hello")' > deno-bin.js
+$ deno compile -A deno-bin.js
 
 # Bun
-$ bun build bun-shell.js --compile
+$ echo 'console.log("Hello")' > bun-bin.js # bunっていう名前のバイナリは作れないらしい
+$ bun build bun-bin.js --compile
+
+$ ls -l deno-bin bun-bin
+.rwxrwxrwx  94M yuma 31 Jan  9:41 bun-bin
+.rwxrwxrwx 139M yuma 31 Jan  9:41 deno-bin
 ```
 
+どちらもだいぶ大きいですがDenoの方が約1.5倍大きいです。
+
+Denoはnpmのパッケージも含め、外部パッケージをコンパイルできるのでそこは現状優位ですね
 
 
 # おわりに
-DenoはDeno Deployが非常に強力です
 
+BunはautoimportとNode互換のおかげでめちゃくちゃ記述量が減り、めちゃくちゃ体験がいいですね！
+
+とはいえ、コンパイルする場合にDenoならnpmパッケージが使えたり、package.jsonとnode_modulesなしで開発ができるためまだまだ開発者体験は良いなぁという所感です！
+
+Bun Shellをはじめとして両者ともに開発がめちゃくちゃ活発なので今後が楽しみです🤩
 
 
 # おまけ
 
-クロスプラットフォームを乗っ取ったBun肉まん
+クロスプラットフォームBun肉まん
 
-https://pbs.twimg.com/media/GEasPb1bMAAlfNs?format=jpg&name=small
-https://pbs.twimg.com/media/GEaslBDaIAAdePq?format=png&name=small
-https://pbs.twimg.com/media/GEas4KIaoAAUibJ?format=png&name=360x360
+![](https://pbs.twimg.com/media/GEasPb1bMAAlfNs?format=jpg)
+![](https://pbs.twimg.com/media/GEaslBDaIAAdePq?format=png)
+![](https://pbs.twimg.com/media/GEas4KIaoAAUibJ?format=png)
