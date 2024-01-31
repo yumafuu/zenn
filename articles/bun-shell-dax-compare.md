@@ -221,5 +221,4 @@ Bun Shellをはじめとして両者ともに開発がめちゃくちゃ活発�
 クロスプラットフォームBun肉まん
 
 https://x.com/bunjavascript/status/1749274910856445974?s=20
-https://x.com/bunjavascript/status/1749275295847477579?s=20
 https://x.com/bunjavascript/status/1749275619811271141?s=20
