@@ -1,0 +1,1 @@
+/home/yuma/Develop/zenn/src/bun-shell
