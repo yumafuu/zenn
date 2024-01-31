@@ -85,11 +85,7 @@ const options = [
   { ja: "たかさご家", en: "takasagoya" },
 ]
 
-const index = await $.select({
-  message: "What's your favourite shop?",
-  options: options.map((o) => o.ja),
-});
-
+const index = await $.select({ message: "What's your favourite shop?", options: options.map((o) => o.ja) });
 const selected = options[index]
 
 let shop
@@ -100,11 +96,8 @@ await pb.with(async () => {
 });
 
 const img = shop.photos[0].url
-await $`curl -s ${img} -o ${selected.en}.jpg && wezterm imgcat ${selected.en}.jpg`
-const result = await $.confirm({
-  message: `${selected.ja}を食べ行きますか?`,
-  default: true,
-});
+await $`curl -s ${img} -o ${selected.en}.jpg && imgcat ${selected.en}.jpg`
+const result = await $.confirm({ message: `${selected.ja}を食べ行きますか?`});
 
 console.log(result);
 ```
@@ -223,6 +216,6 @@ Bun Shellをはじめとして両者ともに開発がめちゃくちゃ活発�
 
 クロスプラットフォームBun肉まん
 
-![](https://pbs.twimg.com/media/GEasPb1bMAAlfNs?format=png&name=360x360)
-![](https://pbs.twimg.com/media/GEaslBDaIAAdePq?format=png&name=360x360)
-![](https://pbs.twimg.com/media/GEas4KIaoAAUibJ?format=png&name=360x360)
+https://x.com/bunjavascript/status/1749274910856445974?s=20
+https://x.com/bunjavascript/status/1749275295847477579?s=20
+https://x.com/bunjavascript/status/1749275619811271141?s=20
