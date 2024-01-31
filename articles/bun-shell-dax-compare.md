@@ -1,9 +1,9 @@
 ---
 title: "Denoと比較しながらBun Shellを見てみる"
-emoji: "👀"
+emoji: "🧄"
 type: "tech"
 topics: ["bun", "deno", "dax"]
-published: false
+published: true
 ---
 
 # Bun Shellが出た
