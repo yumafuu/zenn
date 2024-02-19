@@ -1,5 +1,5 @@
 ---
-title: "macでsixel入りtmuxをBrewで入れる"
+title: "macでsixel入りtmuxをBrewでインストールする"
 emoji: "🐡"
 type: "tech"
 topics: ["sixel", "tmux"]
