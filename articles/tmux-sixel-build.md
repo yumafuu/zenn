@@ -14,7 +14,7 @@ publication_name: "ispec_inc"
 
 https://raw.githubusercontent.com/tmux/tmux/3.4/CHANGES
 
-sixelはターミナルで画像を表示するプロトコルで、iterm2などでは `imgcat`などで画像が表示できます！
+sixelはターミナルで画像を表示するプロトコルで、`img2sixel`やiterm2の`imgcat`などで画像が表示できます！
 
 
 # 早速Brew Install
