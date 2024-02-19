@@ -50,7 +50,7 @@ $ brew install --build-from-source --formula ファイル
 今回は55行目のargsに`--enable-sixel `をつっこめばいいので `sed` で入れてみます
 
 ```bash
-$ curl -s https://raw.githubusercontent.com/Homebrew/homebrew-core/c5de89fc9934080854f8bfbcd999109ee2c738c4/Formula/t/tmux.rb > /tmp/tmux.rb
+$ curl -o /tmp/tmux.rb https://raw.githubusercontent.com/Homebrew/homebrew-core/c5de89fc9934080854f8bfbcd999109ee2c738c4/Formula/t/tmux.rb
 $ sed -i '' '55s/^/ --enable-sixel\'$'\n/' /tmp/tmux.rb
 $ brew install --build-from-source --formula /tmp/tmux.rb
 ```
