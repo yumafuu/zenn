@@ -1,9 +1,9 @@
 ---
-title: "sixel入りtmuxをBrewで入れる"
-emoji: "🐡"
+title: "sixel入りtmuxをBrewで入れる！"
+emoji: "👶"
 type: "tech"
 topics: ["sixel", "tmux"]
-published: false
+published: true
 publication_name: "ispec_inc"
 ---
 
