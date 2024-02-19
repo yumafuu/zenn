@@ -29,7 +29,7 @@ $ brew install tmux
 
 Brewではどうビルドしてるのかというと、
 
-https://github.com/Homebrew/homebrew-core/blob/c5de89fc9934080854f8bfbcd999109ee2c738c4/Formula/t/tmux.rb#L52-L56
+https://github.com/Homebrew/homebrew-core/blob/c5de89fc9934080854f8bfbcd999109ee2c738c4/Formula/t/tmux.rb#L49-L76
 
 --enable-sixelが入ってないです
 
@@ -38,14 +38,15 @@ https://github.com/Homebrew/homebrew-core/blob/c5de89fc9934080854f8bfbcd999109ee
 Brewの設定を書き換えてインストールしてみましょう！
 上のファイルの55行目に`--enable-sixel `をつっこめばいいので `sed` で入れるだけで良いです
 
+Brewでは
 ```bash
-$ brew --build-from-source --formula ファイル`
+$ brew --build-from-source --formula ファイル
 ```
-とすれば、ファイルからビルドをできます
+とすれば、ファイルからパッケージをビルドをできます
 
-``` bash
-$ curl -s https://raw.githubusercontent.com/Homebrew/homebrew-core/c5de89fc9934080854f8bfbcd999109ee2c738c4/Formula/t/tmux.rb > /tmp/tmux.rb && \
-    sed -i '' '55s/^/ --enable-sixel\'$'\n/' /tmp/tmux.rb
+```bash
+$ curl -s https://raw.githubusercontent.com/Homebrew/homebrew-core/c5de89fc9934080854f8bfbcd999109ee2c738c4/Formula/t/tmux.rb > /tmp/tmux.rb
+$ sed -i '' '55s/^/ --enable-sixel\'$'\n/' /tmp/tmux.rb
 $ brew install --build-from-source --formula /tmp/tmux.rb
 ```
 
