@@ -1,5 +1,5 @@
 ---
-title: "sixel入りtmuxをBrewで入れる！"
+title: "sixel対応tmuxをBrewで入れる！"
 emoji: "👶"
 type: "tech"
 topics: ["sixel", "tmux"]
@@ -47,7 +47,7 @@ $ brew install --build-from-source --formula ファイル
 とすれば、ファイルからパッケージをビルドをできます
 
 
-今回はのファイルのargsに`--enable-sixel `をつっこめばいいので `sed` で入れてみます
+今回は55行目のargsに`--enable-sixel `をつっこめばいいので `sed` で入れてみます
 
 ```bash
 $ curl -s https://raw.githubusercontent.com/Homebrew/homebrew-core/c5de89fc9934080854f8bfbcd999109ee2c738c4/Formula/t/tmux.rb > /tmp/tmux.rb
@@ -63,4 +63,4 @@ $ brew install --build-from-source --formula /tmp/tmux.rb
 
 https://github.com/Homebrew/homebrew-core/pull/162644
 
-プルリクが上がってるので、もうすぐマージされそうですが、勉強も兼ねてやってみました✌️
+プルリクが上がってるので、もうすぐマージされそうですが、我慢できずにやってみました✌️
