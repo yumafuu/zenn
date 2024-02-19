@@ -10,9 +10,9 @@ publication_name: "ispec_inc"
 # tmuxにsixelが入った！！！！！！！！！！！！！
 やったー！！！
 
-https://raw.githubusercontent.com/tmux/tmux/3.4/CHANGES
-
 [![Image from Gyazo](https://i.gyazo.com/8464a71c0d3f92f18a549465b17b1049.png)](https://gyazo.com/8464a71c0d3f92f18a549465b17b1049)
+
+https://raw.githubusercontent.com/tmux/tmux/3.4/CHANGES
 
 sixelはターミナルで画像を表示するプロトコルで、iterm2などでは `imgcat`などで画像が表示できます！
 
@@ -23,19 +23,22 @@ sixelはターミナルで画像を表示するプロトコルで、iterm2など
 $ brew install tmux
 ```
 
-では無理なんですね、、、、
+ではまだ無理なんですね、、、、
 
 画像の通りビルドのオプションで `--sixel-enable`を指定しないといけません。
 
-Brewではどうビルドしてるのかというと、
+Brewのビルドオプションをみてみると、
 
 https://github.com/Homebrew/homebrew-core/blob/c5de89fc9934080854f8bfbcd999109ee2c738c4/Formula/t/tmux.rb#L49-L76
 
---enable-sixelが入ってないです
+`--enable-sixel`が入ってないです
 
-# 書き換え
+# 対応
 
-Brewの設定を書き換えてインストールしてみましょう！
+なければ足せばいいじゃない。
+
+
+ってことでBrewの設定を書き換えてインストールしてみましょう！
 
 Brewでは
 ```bash
