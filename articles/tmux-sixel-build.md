@@ -42,7 +42,7 @@ https://github.com/Homebrew/homebrew-core/blob/c5de89fc9934080854f8bfbcd999109ee
 
 Brewでは
 ```bash
-$ brew --build-from-source --formula ファイル
+$ brew install --build-from-source --formula ファイル
 ```
 とすれば、ファイルからパッケージをビルドをできます
 
