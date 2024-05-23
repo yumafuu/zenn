@@ -1,6 +1,6 @@
 ---
 title: "Postman代替の「Ain」の紹介"
-emoji: "🦭"
+emoji: "💡"
 type: "tech"
 topics: ["ain", "shellspec", "aquaclivm"]
 published: true
