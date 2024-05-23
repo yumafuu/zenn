@@ -1,0 +1,14 @@
+[Host]
+/products/add
+
+[Method]
+POST
+
+[Body]
+$(cat add-products.json)
+
+[Backend]
+curl
+
+[BackendOptions]
+-sS

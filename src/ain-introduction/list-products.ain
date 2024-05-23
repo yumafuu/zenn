@@ -1,0 +1,6 @@
+[Host]
+products
+
+[Query]
+limit=10
+skip=0

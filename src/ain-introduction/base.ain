@@ -1,0 +1,8 @@
+[Host]
+https://dummyjson.com
+
+[Backend]
+curl
+
+[BackendOptions]
+-sS

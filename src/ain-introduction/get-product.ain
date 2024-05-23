@@ -1,0 +1,11 @@
+[Host]
+/products/${ID}
+
+[Method]
+GET
+
+[Backend]
+curl
+
+[BackendOptions]
+-s
