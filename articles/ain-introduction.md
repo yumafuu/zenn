@@ -2,7 +2,7 @@
 title: "Postman代替の「Ain」の紹介"
 emoji: "🦭"
 type: "tech"
-topics: ["ain", "shellspec", "aqua"]
+topics: ["ain", "shellspec", "aquaclivm"]
 published: true
 publication_name: "ispec_inc"
 ---
