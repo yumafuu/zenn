@@ -299,9 +299,9 @@ aquaが最強な理由は、CIとの相性が抜群だから
 name: API E2E Test
 
 on:
-    push:
-        branches:
-            - main
+  push:
+    branches:
+      - main
 
 jobs:
   ApiE2ETest:
