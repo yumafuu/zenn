@@ -1,5 +1,5 @@
 ---
-title: "Postman代替の「Ain」の紹介"
+title: "Postman代替のCLIツール「Ain」の紹介"
 emoji: "💡"
 type: "tech"
 topics: ["ain", "shellspec", "aquaclivm"]
@@ -14,7 +14,7 @@ publication_name: "ispec_inc"
 ![](https://github.com/jonaslu/ain/raw/main/assets/show-and-tell.gif?raw=true)
 
 
-[Ain](https://github.com/jonaslu/ain)はターミナル用のAPIクライアントです
+[Ain](https://github.com/jonaslu/ain)はCLIツールでターミナル用のAPIクライアントです。
 
 https://github.com/jonaslu/ain
 
