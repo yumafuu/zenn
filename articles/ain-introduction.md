@@ -16,6 +16,8 @@ publication_name: "ispec_inc"
 
 [Ain](https://github.com/jonaslu/ain)はターミナル用のAPIクライアントです
 
+https://github.com/jonaslu/ain
+
 使い方は非常に簡単で、リクエストごとに.ainという拡張子のファイルを作成して、`ain`コマンドの引数に渡すだけです。
 
 
@@ -53,6 +55,8 @@ HTTPのリクエストの必要なパラメーターを.ainファイルに記述
 めちゃくちゃわかりやすい！！
 
 TOMLに近い形ですが、独自のパーサーを使っているようです。
+
+https://github.com/jonaslu/ain/blob/main/internal/pkg/parse/tokenize.go
 
 
 ## ミニマムな例
