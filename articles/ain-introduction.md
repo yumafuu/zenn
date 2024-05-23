@@ -287,7 +287,7 @@ Finished in 2.93 seconds (user 0.76 seconds, sys 0.13 seconds)
 
 CLIなので、CI/CDでの利用も簡単です!
 
-aquaが最強な理由は、CIでの利用が非常に簡単だからです
+aquaが最強な理由は、CIとの相性が抜群だから
 
 ```yaml file:.github/workflows/api-e2e-test.yml
 name: API E2E Test
