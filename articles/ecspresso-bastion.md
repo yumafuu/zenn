@@ -164,7 +164,7 @@ ecspresso exec \
 --wait-untilとtasksコマンドを@fujiwaraさんにコメントで教えていだだきました！ありがとうございます🙇‍♂️
 
 * 追記(5/25)
-[Release v2.3.4 · kayac/ecspresso](https://github.com/kayac/ecspresso/releases/tag/v2.3.4)にて`-L`オプションが追加されたので修正しました。
+[v2.3.4](https://github.com/kayac/ecspresso/releases/tag/v2.3.4)にて`-L`オプションが追加されたので修正しました。
 
 
 bashで実行したら20秒くらいでTaskが起動します
