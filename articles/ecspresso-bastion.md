@@ -156,7 +156,7 @@ id=$(
 # ポートフォワードする
 ecspresso exec \
   --port-forward \
-  --L 3306:$RDS_HOST:3306 \
+  -L 3306:$RDS_HOST:3306 \
   --id $id
 ```
 
