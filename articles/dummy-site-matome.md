@@ -1,5 +1,5 @@
 ---
-title: "ダミーデータを返すサイトのまとめ"
+title: "たまに使うダミーデータを返すサイトのまとめ"
 emoji: "🤙"
 type: "tech"
 topics: ["dummy"]
@@ -22,6 +22,22 @@ https://fakeimg.pl
 https://robohash.org
 
 # JSON
+
+## jsonplaceholder
+
+jsonファイルをRestAPIとしてサーブできる[json-server](https://github.com/typicode/json-server)やJSONファイルをデータベースとしてRead,Writeできるようにする[lowdb](https://github.com/typicode/lowdb)を作っているtypicodeさんが運営しているサイトです。
+
+https://jsonplaceholder.typicode.com
+
+```bash
+$ curl https://jsonplaceholder.typicode.com/todos/1
+{
+  "userId": 1,
+  "id": 1,
+  "title": "delectus aut autem",
+  "completed": false
+}
+```
 
 ## httpbin
 
