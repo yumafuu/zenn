@@ -2,7 +2,7 @@
 title: "ローマ字で日本語検索する by migemo (with vim)"
 emoji: "🐸"
 type: "tech"
-topics: ["migemo", "vim", "nvim", "denops"]
+topics: ["migemo", "vim", "neovim", "denops"]
 published: true
 publication_name: "ispec_inc"
 ---
