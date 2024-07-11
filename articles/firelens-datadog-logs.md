@@ -7,7 +7,7 @@ published: true
 publication_name: ispec_inc
 ---
 
-# やりたいこと
+# はじめに
 
 firelensを使ってECSのFargateのコンテナのログをDatadogに送る方法を紹介します！
 
