@@ -26,7 +26,7 @@ ECSのタスク定義でログをルーティングしたいコンテナのサ�
 
 # 実装
 
-## 1. APIキーの取得
+## APIキーの取得
 
 https://ap1.datadoghq.com/organization-settings/api-keys で DataDogのAPIキーを取得して,SSM parameter Storeに保存しておきます。
 
@@ -42,13 +42,14 @@ $ aws ssm put-parameter \
 Datadogのドキュメントは以下のようになっています。
 [![Image from Gyazo](https://i.gyazo.com/86339d30adaf9495c227f3cf33052f02.png)](https://gyazo.com/86339d30adaf9495c227f3cf33052f02)
 
-ポイントとして、`apikey`を直接記述するのはセキュリティ的に問題があるので、SSM parameter Storeから取得するようにします。
-secretOptionsでoptionの値をSSM parameter storeかsecret managerから取得することができます。
-ARNかkeyの名前を指定することで取得することができます。
+基本これ通りに実装しますが、`apikey`を直接記述するのはセキュリティ的に問題があるので、SSM parameter Storeから取得するようにします。
+`secretOptions`でoptionの値をSSM parameter storeかsecret managerから取得することができます。
 
 *参考*
 - [Amazon ECS ログ記録設定のシークレットを取得する - Amazon Elastic Container Service](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/secrets-logconfig.html)
 
+
+タスク定義は以下のような感じです
 
 ```json5
 {
@@ -126,11 +127,11 @@ firelensのイメージはこちらで公開されております
 [![Image from Gyazo](https://i.gyazo.com/98d68825e882ecd20c248882691563e7.png)](https://gyazo.com/98d68825e882ecd20c248882691563e7)
 - [Datadog サイトの概要](https://docs.datadoghq.com/ja/getting_started/site/#datadog-%E3%82%B5%E3%82%A4%E3%83%88%E3%81%AB%E3%82%A2%E3%82%AF%E3%82%BB%E3%82%B9%E3%81%99%E3%82%8B)
 
-自分は`ap1`でアカウントを作成していたので `http-intake.logs.ap1.datadoghq.com`に変更したところ、ログがDatadogに送られるようになりました。
+自分は`ap1`でアカウントを作成していたので `http-intake.logs.ap1.datadoghq.com`に変更したところ、正常にログがDatadogに送られるようになりました。
 
 
 # おわりに
 
-シンプルですが、文献が少ないのでハマりました
+シンプルですが、文献が少ないのでハマったので作業ログもかねて書いてみました。
 
 これからもオブザーバビリティを高めてオブオブしていきたいです！
