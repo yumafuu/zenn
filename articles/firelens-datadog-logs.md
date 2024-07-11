@@ -3,7 +3,7 @@ title: FargateのログをfirelensでDatadogに送る
 emoji: 🔎
 type: tech
 topics: [aws, ECS, Fargate, firelens, datadog]
-published: false
+published: true
 publication_name: ispec_inc
 ---
 
