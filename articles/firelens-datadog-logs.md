@@ -28,7 +28,7 @@ ECSのタスク定義でログをルーティングしたいコンテナのサ�
 
 ## APIキーの取得
 
-https://ap1.datadoghq.com/organization-settings/api-keys で DataDogのAPIキーを取得して,SSM parameter Storeに保存しておきます。
+https://ap1.datadoghq.com/organization-settings/api-keys で DataDogのAPIキーを取得して,SSM Parameter Storeに保存しておきます。
 
 ```bash
 $ aws ssm put-parameter \
@@ -42,8 +42,8 @@ $ aws ssm put-parameter \
 Datadogのドキュメントは以下のようになっています。
 [![Image from Gyazo](https://i.gyazo.com/86339d30adaf9495c227f3cf33052f02.png)](https://gyazo.com/86339d30adaf9495c227f3cf33052f02)
 
-基本これ通りに実装しますが、`apikey`を直接記述するのはセキュリティ的に問題があるので、SSM parameter Storeから取得するようにします。
-`secretOptions`でoptionの値をSSM parameter storeかsecret managerから取得することができます。
+基本これ通りに実装しますが、`apikey`を直接記述するのはセキュリティ的に問題があるので、SSM Parameter Storeから取得するようにします。
+`secretOptions`でoptionの値をSSM Parameter StoreかSecretManagerから取得することができます。
 
 *参考*
 - [Amazon ECS ログ記録設定のシークレットを取得する - Amazon Elastic Container Service](https://docs.aws.amazon.com/ja_jp/AmazonECS/latest/developerguide/secrets-logconfig.html)
@@ -114,7 +114,7 @@ firelensのイメージはこちらで公開されております
 [error] [output:datadog:datadog.1] http://http-intake.logs.datadoghq.com:80 HTTP status=403
 ```
 
-認証まわりで怒られいたので,APIキーが正しく設定されていないのではと思い、secretOptionsをやめてみたり、SSM parameter Storeの値を確認したりしてみましたが、問題はありませんでした。
+認証まわりで怒られていたのでAPIキーが正しく設定されていないのではと思い、secretOptionsをやめてみたりSSM Parameter Storeの値を確認したりしてみましたが、問題はありませんでした。
 
 結論、送信先のHostが間違っていました。
 デフォルトでは`US1`のホストである`http-intake.logs.datadoghq.com`が設定されているようです。
