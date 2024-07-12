@@ -3,7 +3,7 @@ title: mailpitでメール送信のテストをする with Go
 emoji: 💌
 type: tech
 topics: [mailpit, go, aquaclivm]
-published: false
+published: true
 publication_name: ispec_inc
 ---
 
