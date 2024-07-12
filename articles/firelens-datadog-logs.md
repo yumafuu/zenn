@@ -17,6 +17,7 @@ firelensくんが最強で思ってるより簡単にできるので、ぜひ試
 
 ログルーターであるFluentBit をマネージドで提供してくれるサービスです。
 ECSのタスク定義でログをルーティングしたいコンテナのサイドカーにfirelensのコンテナを定義して、 logConfigurationのlogDriverに`awsfirelens`を指定することで、ログをfirelensに送ることができます。
+後ほど具体的な実装を紹介します。
 
 *参考*
 - [fluentbit](https://fluentbit.io/)
