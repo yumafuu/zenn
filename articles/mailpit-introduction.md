@@ -2,7 +2,7 @@
 title: mailpitでメール送信のテストをする with Go
 emoji: 💌
 type: tech
-topics: [mailpit, go]
+topics: [mailpit, go, aquaclivm]
 published: false
 publication_name: ispec_inc
 ---
@@ -37,6 +37,11 @@ $ brew install mailpit
 # aquaでも入ります
 $ aqua g -i axllent/mailpit
 ```
+
+余談ですが、aquaになかったので、PRをおくったら秒でマージしてリリースしてくれました！
+https://github.com/aquaproj/aqua-registry/pull/24827
+
+Thank you @suzuki-shunsukeさま !
 
 ## 使い方
 
