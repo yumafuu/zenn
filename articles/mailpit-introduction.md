@@ -55,9 +55,9 @@ http://localhost:8025 にアクセスすると、メールの一覧が表示さ�
 
 当たり前ですがまだメールを送信してないので、何も表示されていません。
 
-CLIで送ってみます。
+cliにsendmailというサブコマンドがあり、メール標準入力でメールを渡すとmailpitにメールが保存されます。
 
-sendmailというサブコマンドがあり、メール標準入力でメールを渡すとmailpitにメールが保存されます。
+もちろんSMTPでメールを送信することもできます。後ほどGoで実装してみます。
 
 ```bash
 $ echo -e "To: to@example.com\r\nFrom: from@example.com\r\nSubject: Test Email\n\nThis is a test email."  | \
