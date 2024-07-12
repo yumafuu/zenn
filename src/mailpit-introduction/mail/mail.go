@@ -19,6 +19,5 @@ func Send(to, from, body string) error {
 		return err
 	}
 
-	fmt.Println("Email sent successfully!")
 	return nil
 }

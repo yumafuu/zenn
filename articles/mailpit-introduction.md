@@ -147,7 +147,6 @@ func Send(to, from, body string) error {
 		return err
 	}
 
-	fmt.Println("Email sent successfully!")
 	return nil
 }
 
@@ -202,10 +201,19 @@ func getLatestMailFromMailpit() (string, error) {
 
 ```
 
+ちゃんとテストが通ることを確認できます！
+```bash
+$ go test ./mail -v
+=== RUN   Test_Main
+=== RUN   Test_Main/メール本文が正しいことを確認
+--- PASS: Test_Main (0.00s)
+    --- PASS: Test_Main/メール本文が正しいことを確認 (0.00s)
+PASS
+ok      mailpit-test/mail       0.005s
+```
+
 # おわりに
 
-mailpitを使うことで、ローカルでの開癓やテスト環境でのメール送信のテストが簡単に行えるようになります！
+mailpitを使うことで、ローカルでの開発やテスト環境でのメール送信のテストが簡単に行えるようになります！
 
 ぜひメールの送信テストに使ってみてください！
-
-
