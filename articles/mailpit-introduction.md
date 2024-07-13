@@ -38,6 +38,23 @@ $ brew install mailpit
 $ aqua g -i axllent/mailpit
 ```
 
+dockerイメージもあるのでお好きな方法で！
+```yaml
+services:
+  mailpit:
+    image: axllent/mailpit:v1.19.0
+    ports:
+      - '8025:8025'
+      - '1025:1025'
+    environment:
+      - MP_DATA_FILE=/data/mailpit.db # メールの内容をディスクに保存する場合のパス指定
+    volumes:
+      - mp-data-file:/data # 永続化する
+
+volumes:
+  mp-data-file:
+```
+
 余談ですが、aquaになかったので、PRをおくったら秒でマージしてリリースしてくれました！
 https://github.com/aquaproj/aqua-registry/pull/24827
 
