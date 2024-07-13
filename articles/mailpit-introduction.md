@@ -88,7 +88,9 @@ $ echo -e "To: to@example.com\r\nFrom: from@example.com\r\nSubject: Test Email\n
 
 こんな感じでメールが保存されているのが確認できます！
 
-UIも使いやすいです。
+vueで書かれたUIも使いやすいです。
+
+https://github.com/axllent/mailpit/tree/develop/server/ui-src
 
 Apiでも送信したメールが確認できるので、やってみます。
 
