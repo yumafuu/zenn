@@ -1,15 +1,13 @@
 ---
-title: "[小ネタ]metabaseをfargateにデプロイする時はenable_dns_hostnamesをtrueにして"
+title: "metabaseをfargateにデプロイする時はenable_dns_hostnamesをtrueにして"
 emoji: "🦭"
 type: "tech"
 topics: ["aws", "fargate", "metabase"]
-published: false
+published: true
 publication_name: "ispec_inc"
 ---
 
 # 起きたこと
-
-個人のメモ半分に公開します
 
 [Metabase](https://www.metabase.com/)をFargateに乗せて公開しようと思ったら、migrationは通るけど
 
@@ -42,7 +40,7 @@ metabase初期化にHost名を取得する処理が入ってるっぽくて、VP
 
 これで動いた
 
-```terraform
+```hcl
 module "vpc" {
   source  = "terraform-aws-modules/vpc/aws"
 
