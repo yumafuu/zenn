@@ -1,9 +1,9 @@
 ---
 title: "たまに使うダミーデータを返すサイトのまとめ"
-emoji: "🤙"
+emoji: "🤖"
 type: "tech"
 topics: ["dummy", "吉村家"]
-published: false
+published: true
 publication_name: "ispec_inc"
 ---
 
