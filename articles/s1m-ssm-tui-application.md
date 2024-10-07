@@ -1,5 +1,5 @@
 ---
-title: "SSM Parameter StoreのTUIツール「s1m」の紹介 "
+title: "AWS SSM Parameter StoreのTUIツール「s1m」の紹介 "
 emoji: "💡"
 type: "tech"
 topics: ["go", "aws", "ssm", "tui", "cli"]
