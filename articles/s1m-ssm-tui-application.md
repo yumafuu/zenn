@@ -3,7 +3,7 @@ title: "SSM Parameter StoreのTUIツール「s1m」の紹介 "
 emoji: "💡"
 type: "tech"
 topics: ["go", "aws", "ssm", "tui", "cli"]
-published: false
+published: true
 ---
 
 # S1Mとは
@@ -24,7 +24,7 @@ https://ja.wikipedia.org/wiki/ヌメロニム
 
 # 使い方
 
-SSMを使ったことがある方ならDemoを見てもらうとわかりやすいと思います
+Demoを見てもらうとわかりやすいと思います
 
 [![Image from Gyazo](https://i.gyazo.com/391912839a7a9cd66a935e54a37e4c15.gif)](https://gyazo.com/391912839a7a9cd66a935e54a37e4c15)
 
@@ -70,21 +70,7 @@ $ aqua g -i yumafuu/s1m
 * 値のコピー
 
 
-## キーバインド
-
-Vimっぽいキーバインドで操作できます
-
-| Key     | Description                                 |
-|---------|---------------------------------------------|
-| `j`     | Move down                                   |
-| `k`     | Move up                                     |
-| `i`     | Edit Parameter under the cursor             |
-| `d`     | Delete Parameter under the cursor           |
-| `o`     | Create new Parameter                        |
-| `c`     | Copy the Value under the cursor             |
-| `y`     | Copy the Name of Parameter under the cursor |
-| `<ESC>` | Exit from the input box                     |
-
+シンプルで使いやすいので、SSMのパラメータストアを操作する際にぜひ使ってみてください
 
 # Tviewの紹介
 
