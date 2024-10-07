@@ -36,7 +36,7 @@ $ brew install yumafuu/yumafuu/s1m
 # go install
 $ go install github.com/yumafuu/s1m@latest
 
-# aqua
+# aquaでもいけます
 $ aqua g -i yumafuu/s1m
 ```
 
@@ -168,6 +168,12 @@ HTMLでいうところの `<input type="text">` みたいなものです
 s1mでは、コンファームのための`y/n`の表示と入力を受け付けるために使用しています
 
 vimmerのために`:wq`でも`y`の入力を受け付けるようにしています✋
+
+---
+
+他にもいろいろなウィジェットがあって大体のことはtviewで実装できると思うので気になる方は是非触ってみてください！
+
+
 
 # 終わりに
 
