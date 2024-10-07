@@ -6,7 +6,7 @@ topics: ["go", "aws", "ssm", "tui", "cli"]
 published: true
 ---
 
-# S1Mとは
+# s1mとは
 
 ssmのパラメータストア(AWS Systems Manager Parameter Store)をTUIで操作するツールです
 
