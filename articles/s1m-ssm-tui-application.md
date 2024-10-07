@@ -12,7 +12,7 @@ ssmのパラメータストア(AWS Systems Manager Parameter Store)をTUIで操�
 
 https://github.com/yumafuu/s1m
 
-ssmだと長いので中間の`s`が1文字なので`s1m`という名前にしました
+ssmだと長いので(?)中間の`s`が1文字なので`s1m`という名前にしました
 
 ちなみに、k8sやi18nやs1mのように、先頭と末尾のみ残して、間に残された文字をその文字数（桁数）で省略する表現を「ヌメロニム(numeronym)」というらしいです👀
 
