@@ -2,7 +2,7 @@
 title: "SSM Parameter StoreのTUIツール「s1m」の紹介 "
 emoji: "💡"
 type: "tech"
-topics: ["aws", "ssm", "tui", "tview" ]
+topics: ["go", "aws", "ssm", "tui", "cli"]
 published: false
 ---
 
