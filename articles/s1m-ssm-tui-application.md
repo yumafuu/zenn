@@ -10,21 +10,21 @@ published: false
 
 ssmのパラメータストア(AWS Systems Manager Parameter Store)をTUIで操作するツールです
 
-僕が作りました
 https://github.com/yumafuu/s1m
+
+僕が作りました
 
 ssmだと長いので中間の`s`が1文字なので`s1m`という名前にしました
 
-ちなみに、k8sやi18nやs1mのように、先頭と末尾のみ残して、間に残された文字をその文字数（桁数）で省略する表現を「ヌメロニム(numeronym)」というらしいです
+ちなみに、k8sやi18nやs1mのように、先頭と末尾のみ残して、間に残された文字をその文字数（桁数）で省略する表現を「ヌメロニム(numeronym)」というらしいです👀
 
 
 https://ja.wikipedia.org/wiki/ヌメロニム
 
 
-
 # 使い方
 
-Demoを見てもらうとわかりやすいと思います
+SSMを使ったことがある方ならDemoを見てもらうとわかりやすいと思います
 
 [![Image from Gyazo](https://i.gyazo.com/391912839a7a9cd66a935e54a37e4c15.gif)](https://gyazo.com/391912839a7a9cd66a935e54a37e4c15)
 
