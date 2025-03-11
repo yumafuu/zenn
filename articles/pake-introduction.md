@@ -29,7 +29,7 @@ MEMO:
 ## 使うツール
 
 - [karabiner-elements](https://karabiner-elements.pqrs.org/)
-- optional [🤱Pake](https://github.com/tw93/Pake)
+- [🤱Pake](https://github.com/tw93/Pake)
 
 
 ## 方法
