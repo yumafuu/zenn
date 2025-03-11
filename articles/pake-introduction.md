@@ -1,3 +1,4 @@
+---
 title: "思考の速度でアプリを切り替える方法 on mac"
 emoji: "🧠"
 type: "tech"
