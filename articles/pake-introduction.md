@@ -1,29 +1,48 @@
----
-title: "URLをmacのアプリに変換するPakeの紹介"
-emoji: "👏"
+title: "思考の速度でアプリを切り替える方法 on mac"
+emoji: "🧠"
 type: "tech"
-topics: ["pake"]
+topics: ["karabinerelements", "raycast", "pake"]
 published: false
 publication_name: "knowledgework"
 ---
 
-MEMO:
+# はじめに
 
+[TODO] ちゃんと書く
+
+MEMO:
 対象者
 - macユーザー
 - ネイティブアプリで作業を分けてる人
 
-# よく使うWebアプリありませんか？
+目的
+- 思考の速度でアプリを切り替える
 
-このサイトmacのネイティブアプリにしたいなぁ...って思ったことありませんか？
-
-
-# Pakeの紹介
-
-https://github.com/tw93/Pake
-
-URLを
+方法
+- PakeでURLをアプリにする
+- karabiner-elementsでキーボードにアプリopenを割り当てる
 
 
-## こんな感じ
+# 方法
 
+## 使うツール
+
+- [karabiner-elements](https://karabiner-elements.pqrs.org/)
+- optional [🤱Pake](https://github.com/tw93/Pake)
+
+
+## 方法
+
+### PakeでURLをアプリにする
+
+[TODO]: 書く
+
+### karabiner-elements
+[TODO]: コードを示す
+
+## 実際に動作する様子
+
+[TODO]: Gif貼る
+
+# おわりに
+最高でしょ？
