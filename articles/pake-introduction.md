@@ -9,7 +9,7 @@ publication_name: "knowledgework"
 
 # はじめに
 
-[TODO] ちゃんと書く
+TODO: ちゃんと書く
 
 MEMO:
 対象者
@@ -36,14 +36,14 @@ MEMO:
 
 ### PakeでURLをアプリにする
 
-[TODO]: 書く
+TODO: 書く
 
 ### karabiner-elements
-[TODO]: コードを示す
+TODO: コードを示す
 
 ## 実際に動作する様子
 
-[TODO]: Gif貼る
+TODO: Gif貼る
 
 # おわりに
 最高でしょ？
