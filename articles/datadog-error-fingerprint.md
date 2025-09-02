@@ -22,7 +22,7 @@ Datadog Error Trackingには、スタックやtraceなどの情報を元に自�
 
 https://docs.datadoghq.com/real_user_monitoring/error_tracking/explorer/
 
-ナレッジワークでは、`context canceled `を含むエラーがまとまらず、毎週数十件の同様アラートが発生していました。
+ナレッジワークでは、`context canceled`を含むエラーがまとまらず、毎週数十件の同様アラートが発生していました。
 Datadog上で個別にIgnoreしても、微妙に異なるtraceのため新しいIssueとして再出現して、いたちごっこの状態になっていました。
 結果、週次の非同期トリアージ会で毎回ignore作業が発生し、運用負荷になっていました。
 
@@ -108,10 +108,10 @@ log.AddHook(cloudlogging.DatadogFingerprintHook(
 
 結果的に画像のように、別のエラーが一つのエラーとしてまとまっているのが確認できました。
 
-Before
+Before: Issueのリスト画面
 ![](/images/datadog-error-fingerprint/image-before.png)
 
-After
+After: Issueの詳細画面
 ![](/images/datadog-error-fingerprint/image-after.png)
 
 
