@@ -9,12 +9,11 @@ published: false
 
 <!-- 概要 -->
 
-お久しぶりです、yumaです！
+お久しぶりです、yumaです
 
-この記事は、「KNOWLEDGE WORK Blog Sprint」第3日目の記事になります。
+今日はDatadogの[Error Tracking](https://www.datadoghq.com/ja/product/error-tracking/)でアラート数を削減し、各チームが自律的にDevOpsできる環境を構築した事例を紹介します🚀
 
-今日はDatadogの[Error Tracking](https://www.datadoghq.com/ja/product/error-tracking/)でアラート数を削減し、各チームが自律的にDevOpsできる環境を構築した事例を紹介します。
-
+この記事は、「KNOWLEDGE WORK Blog Sprint」第3日目の記事です
 
 ## 課題
 
@@ -33,7 +32,7 @@ Datadog Error TrackingのCustom Groupingの機能を使って、別物と判定�
 
 https://docs.datadoghq.com/error_tracking/error_grouping/?tab=android#custom-grouping
 
-Datadog Logsに送信されるエラーに以下のようにerror.fingerprintというプロパティを付与するだけで完了です。
+Datadog Logsに送信されるエラーに以下のように`error.fingerprint`というプロパティを付与するだけで完了です。
 
 ```json
 {
@@ -54,11 +53,11 @@ Google Cloudでは`error.fingerprint`は特別な意味を持たないため、�
 }
 ```
 
-そしてDatadog LogsのPipelineでlabels.datadog_fingerprintをerror.fingerprintにリマップしたら完了です。
+そしてDatadog LogsのPipelineで`labels.datadog_fingerprint`を`error.fingerprint`にリマップしたら完了です。
 
 以下がterraformでの実装例です。
 
-```terraform
+```hcl
 resource "datadog_logs_custom_pipeline" "error_tracking_remap" {
   // ...
   processor {
@@ -78,6 +77,7 @@ resource "datadog_logs_custom_pipeline" "error_tracking_remap" {
 }
 ```
 
+https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/logs_custom_pipeline
 
 ### セルフサービス化
 ナレッジワークでは複数プロダクトの開発チームが存在しています。
@@ -85,6 +85,7 @@ resource "datadog_logs_custom_pipeline" "error_tracking_remap" {
 以前はDatadogのデフォルト設定をそのまま使用していましたが、各チームがオーナーシップを持って自律的にDevOpsできるよう、設定を各チームが所有するコードベースから行えるインターフェースを用意しました。
 
 ```go
+// log書き込み時に条件とfingerprint名を設定できる
 log.AddHook(cloudlogging.DatadogFingerprintHook(
     cloudlogging.FingerprintRule{
         Name: "teamA-custom_error",
@@ -98,12 +99,14 @@ log.AddHook(cloudlogging.DatadogFingerprintHook(
 
 ## まとめ
 
-画像のように、別のエラーが一つのエラーとしてまとまっているのが確認できました。
+結果的に画像のように、別のエラーが一つのエラーとしてまとまっているのが確認できました。
 
 ![](/images/datadog-error-fingerprint/image.png)
 
 
-この対応により、同じメッセージのエラーを個別にignoreする必要がなくなり、アラート数が大幅に削減されました。また各チームが自律的にError Trackingを管理できる環境を構築できました。
+この対応により、同じメッセージのエラーを個別にignoreする必要がなくなり、アラート数が大幅に削減されました。
+
+Datadog Error Trackingのfingerprintを使ったCustom Groupingは文献が少なかったので、ぜひ参考にしてみてください！
 
 KNOWLEDGE WORK Blog Sprint、明日9/4の執筆者はQAエンジニアのtettanです。
 お楽しみに！
