@@ -88,8 +88,9 @@ https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/lo
 
 以前はDatadogのデフォルト設定をそのまま使用していましたが、各チームがオーナーシップを持って自律的にDevOpsできるよう、設定を各チームが所有するコードベースから行えるインターフェースを用意しました。
 
+以下のようにfingerprintを設定する条件とfingerprint名をできます。
+
 ```go
-// log書き込み時に条件とfingerprint名を設定できる
 log.AddHook(cloudlogging.DatadogFingerprintHook(
     cloudlogging.FingerprintRule{
         Name: "teamA-custom_error",
