@@ -21,7 +21,11 @@ Datadog Error Trackingではtrace情報をみて自動でissueをまとめてく
 
 しかし同じエラーメッセージでもtrace情報が違うと別のエラーとして区別されてしまいます。
 
-ナレッジーワークでは`context canceled`という文言を含むエラーが一つにまとまらず、Datadog上でignoreの対応をしてもまた別の同じメッセージが上がってきており、いたちごっこなってしまっていました。
+https://docs.datadoghq.com/real_user_monitoring/error_tracking/explorer/
+
+ナレッジーワークでは`context canceled`という文言を含むエラーが一つにまとまらず、**毎週5-6件**同じようなエラーが発生していました。Datadog上でignoreの対応をしてもまた別の同じメッセージが上がってきており、いたちごっこ状態でした。
+
+週次で実施している非同期のエラートリアージ会でも、毎回これらのエラーをignoreする作業が発生し、運用負荷となっていました。
 
 
 ## 対応
@@ -101,10 +105,14 @@ log.AddHook(cloudlogging.DatadogFingerprintHook(
 
 結果的に画像のように、別のエラーが一つのエラーとしてまとまっているのが確認できました。
 
-![](/images/datadog-error-fingerprint/image.png)
+![](/images/datadog-error-fingerprint/image-before.png)
+
+![](/images/datadog-error-fingerprint/image-after.png)
 
 
-この対応により、同じメッセージのエラーを個別にignoreする必要がなくなり、アラート数が大幅に削減されました。
+この対応により、**毎週5-6件発生していた`context canceled`エラーが1つに集約**され、実質的にアラート件数が0になりました。
+
+週次のエラートリアージ会でも、これらのエラーをignoreする作業が不要になり、運用工数を大幅に削減できました。また各チームが自律的にError Tracking管理できる環境も構築できました。
 
 Datadog Error Trackingのfingerprintを使ったCustom Groupingは文献が少なかったので、ぜひ参考にしてみてください！
 
