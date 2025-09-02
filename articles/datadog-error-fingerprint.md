@@ -15,42 +15,45 @@ published: false
 
 この記事は、「KNOWLEDGE WORK Blog Sprint」第3日目の記事です
 
-## 課題
+## 背景・課題
 
-Datadog Error Trackingではtrace情報をみて自動でissueをまとめてくれる機能があります。
-
-しかし同じエラーメッセージでもtrace情報が違うと別のエラーとして区別されてしまいます。
+Datadog Error Trackingには、スタックやtraceなどの情報を元に自動でIssueをまとめる機能があります。
+しかし、同じエラーメッセージでもtraceやコンテキストが異なると別Issueとして扱われ、ノイズが増えがちです。
 
 https://docs.datadoghq.com/real_user_monitoring/error_tracking/explorer/
 
-ナレッジーワークでは`context canceled`という文言を含むエラーが一つにまとまらず、毎週数十件同じようなエラーが発生していました。Datadog上でignoreの対応をしてもまた別の同じメッセージが上がってきており、いたちごっこ状態でした。
-
-週次で実施している非同期のエラートリアージ会でも、毎回これらのエラーをignoreする作業が発生し、運用負荷となっていました。
+ナレッジワークでは、`context canceled `を含むエラーがまとまらず、毎週数十件の同様アラートが発生していました。
+Datadog上で個別にIgnoreしても、微妙に異なるtraceのため新しいIssueとして再出現して、いたちごっこの状態になっていました。
+結果、週次の非同期トリアージ会で毎回ignore作業が発生し、運用負荷になっていました。
 
 
 ## 対応
 
 ### 実装
 
-Datadog Error TrackingのCustom Groupingの機能を使って、別物と判定されてしまうエラーを一つのErrorとしてまとめられるようにします。
+Datadog Error TrackingのCustom Groupingの機能を使って、別物と判定されてしまう同義のエラーを一つのErrorとしてまとめられるようにします。
 
 https://docs.datadoghq.com/error_tracking/error_grouping/?tab=android#custom-grouping
 
+
 Datadog Logsに送信されるエラーに以下のように`error.fingerprint`というプロパティを付与するだけで完了です。
 
-```json
+```json5
 {
-    // ...
+    // other properties...
     "error": {
         "fingerprint": "{FingerprintName}"
     }
 }
 ```
+fingerprintを設定してもサービスを超えてまとまることはないので、適切にserviceを設定しておくことで過剰にまとまりすぎることを抑制できます。
 
-Google Cloudでは`error.fingerprint`は特別な意味を持たないため、まず`labels.datadog_fingerprint`として送信し、Datadog側でリマップする方式を採用しました。バックエンドサーバーからは以下のようなjsonを送信します。
-```json
+
+また、Google Cloudでは`error.fingerprint`は特別な意味を持たないため、まず`labels.datadog_fingerprint`として送信し、Datadog側でリマップする方式を採用しました。バックエンドサーバーからは以下のようなjsonを送信します。
+```json5
 {
-    // ...
+    // other properties...
+    "message": "context canceled: some error message",
     "labels": {
         "datadog_fingerprint": "{FingerprintName}"
     }
@@ -88,9 +91,9 @@ https://registry.terraform.io/providers/DataDog/datadog/latest/docs/resources/lo
 
 以前はDatadogのデフォルト設定をそのまま使用していましたが、各チームがオーナーシップを持って自律的にDevOpsできるよう、設定を各チームが所有するコードベースから行えるインターフェースを用意しました。
 
-以下のようにfingerprintを設定する条件とfingerprint名をできます。
 
 ```go
+// fingerprintを設定する条件とfingerprint名を指定できる
 log.AddHook(cloudlogging.DatadogFingerprintHook(
     cloudlogging.FingerprintRule{
         Name: "teamA-custom_error",
@@ -112,9 +115,9 @@ After
 ![](/images/datadog-error-fingerprint/image-after.png)
 
 
-この対応により、毎週数十件発生していた`context canceled`エラーが1つに集約され、実質的にアラート件数が0になりました。
+この対応により、毎週数十件発生していた`context canceled`エラーが1つに集約され、実質的にアラート件数が0になりました
 
-週次のエラートリアージ会でも、これらのエラーをignoreする作業が不要になり、運用工数を大幅に削減できました。また各チームが自律的にError Tracking管理できる環境も構築できました。
+週次のエラートリアージ会でも、これらのエラーをignoreする作業が不要になり、運用工数を大幅に削減できました。また各チームが自律的にError Tracking管理できる環境も構築できました👏
 
 Datadog Error Trackingのfingerprintを使ったCustom Groupingは文献が少なかったので、ぜひ参考にしてみてください！
 
