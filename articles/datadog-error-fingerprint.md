@@ -121,5 +121,5 @@ After: Issueの詳細画面
 
 Datadog Error Trackingのfingerprintを使ったCustom Groupingは文献が少なかったので、ぜひ参考にしてみてください！
 
-KNOWLEDGE WORK Blog Sprint、明日9/4の執筆者は最強QAエンジニアのtettanです。
+KNOWLEDGE WORK Blog Sprint、明日9/4の執筆者はQAエンジニアのtettanです。
 お楽しみに！
