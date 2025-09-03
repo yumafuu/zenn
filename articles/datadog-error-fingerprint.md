@@ -4,7 +4,7 @@ emoji: 🌭
 type: tech
 publication_name: knowledgework
 topics: [datadog, observability]
-published: false
+published: true
 ---
 
 <!-- 概要 -->
